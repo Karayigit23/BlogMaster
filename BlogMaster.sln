@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogMaster", "BlogMaster\Bl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogMaster.Core", "BlogMaster.Core\BlogMaster.Core.csproj", "{E97FABBA-ABA3-4F0E-837D-0D2CFD0D5921}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogMaster.Infrastructure", "BlogMaster.Infrastructure\BlogMaster.Infrastructure.csproj", "{81E07D76-397C-4416-BD40-78A4AEF318ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{E97FABBA-ABA3-4F0E-837D-0D2CFD0D5921}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E97FABBA-ABA3-4F0E-837D-0D2CFD0D5921}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E97FABBA-ABA3-4F0E-837D-0D2CFD0D5921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81E07D76-397C-4416-BD40-78A4AEF318ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81E07D76-397C-4416-BD40-78A4AEF318ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81E07D76-397C-4416-BD40-78A4AEF318ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81E07D76-397C-4416-BD40-78A4AEF318ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
