@@ -1,5 +1,5 @@
 namespace BlogMaster.Core.Query.Article;
-
+//searc durumu başta sadece article için gerekli sanıyordumj ama diğer entitylerdede ihtiyaç var (örn:user kendi articlerini listelemek isteyebilir)BURAYI DÜZELT
 public class searchQuery
 {
     public class ArticleRepository
@@ -13,7 +13,6 @@ public class searchQuery
 
         public async Task<List<Entity.Article>> SearchArticles(string category = null, string tagId = null, string author = null)
         {
-            // Kullanıcının girdiği kategori, etiket ve yazar parametrelerine göre makaleleri filtreleme işlemleri
             var filteredArticles = _articles;
 
             if (!string.IsNullOrEmpty(category))
