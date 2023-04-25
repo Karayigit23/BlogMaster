@@ -39,13 +39,14 @@ public class CategoryRepository:ICategoryRepository
         await _dbContext.SaveChangesAsync();
     }
 
+    public async Task DeleteCategory(Category category)
+    {
+     
+        _dbContext.Category.Remove(category); 
+        await _dbContext.SaveChangesAsync();
+    }
+
     public async Task DeleteCategory(int categoryId)
     {
-        var categoryToRemove = await _dbContext.Set<Category>().FindAsync(categoryId);
-        if (categoryToRemove != null)
-        {
-            _dbContext.Set<Category>().Remove(categoryToRemove);
-            await _dbContext.SaveChangesAsync();
-        }
     }
 }

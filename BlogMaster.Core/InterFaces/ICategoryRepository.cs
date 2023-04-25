@@ -9,5 +9,5 @@ public interface ICategoryRepository
     Task<Category> GetCategoryById(int categoryId);
     Task<Category> AddCategory(Category category);
     Task UpdateCategory(Category category);
-    Task DeleteCategory(int categoryId);
+    Task DeleteCategory(Category category);
 }
