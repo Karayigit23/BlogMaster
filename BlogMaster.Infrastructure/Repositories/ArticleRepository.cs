@@ -1,59 +1,82 @@
 using BlogMaster.Core.Entity;
 using BlogMaster.Core.InterFaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlogMaster.Infrastructure.Repositories;
 
 public class ArticleRepository:IArticleRepository
 {
-    private readonly DbContext _dbContext;
+  
     
-    public ArticleRepository(DbContext dbContext)
+
+    private readonly AppDbContext _dbContext;
+    
+    public ArticleRepository(AppDbContext dbContext)
     {
         _dbContext = dbContext;
     }
+
     
-    public Task<Article> GetArticleById(int id)
+    //bu arama ile ilgili tüm kısımları search kısmına at articldan ayır  
+    public async Task<Article> GetArticleById(int id)
     {
-        throw new NotImplementedException();
+        return await _dbContext.Article.FirstOrDefaultAsync(a => a.Id == id);
     }
 
-    public Task<List<Article>> GetArticlesByCategory(string category)
+    public async Task<List<Article>> GetArticlesByCategory(string category)
     {
-        throw new NotImplementedException();
+         return await _dbContext.Article.Where(a => a.Category.Name == category).ToListAsync();
+    }
+    public async Task<List<Article>> GetArticlesByTag(string tag)
+    {
+        return await _dbContext.Article.Where(a => a.Tag.Name == tag).ToListAsync();
+
     }
 
-    public Task<List<Article>> GetArticlesByTag(string tag)
+    public async Task<List<Article>> GetArticlesByAuthor(string author)
     {
-        throw new NotImplementedException();
+        return await _dbContext.Article.Where(a => a.AuthorUser.UserName == author).ToListAsync();
+    
     }
 
-    public Task<List<Article>> GetArticlesByAuthor(string author)
+   
+
+    public async Task<List<Article>> GetAllArticles()
     {
-        throw new NotImplementedException();
+        return await _dbContext.Article.ToListAsync();
     }
 
-    public Task<List<Article>> GetArticlesByKeyword(string keyword)
+    public async Task AddArticle(Article article)
     {
-        throw new NotImplementedException();
+       _dbContext.Article.Add(article);
+        await _dbContext.SaveChangesAsync();
+      
     }
 
-    public Task<List<Article>> GetAllArticles()
+    public async Task UpdateArticle(Article article)
     {
-        throw new NotImplementedException();
+        _dbContext.Article.Update(article);
+        await _dbContext.SaveChangesAsync();
+        
     }
 
-    public Task AddArticle(Article article)
+    public async Task DeleteArticle(Article article)
     {
-        throw new NotImplementedException();
+
+
+        _dbContext.Article.Remove(article); 
+        await _dbContext.SaveChangesAsync();
+        
     }
 
-    public Task UpdateArticle(Article article)
+    public async Task<int> GetTodaysArticleCount(string requestAuthor)
     {
-        throw new NotImplementedException();
-    }
+        DateTime today = DateTime.UtcNow.Date;
+        DateTime tomorrow = today.AddDays(1);
+        
+        int count = await _dbContext.Article.Where(a => a.AuthorUser.UserName == requestAuthor && a.PublishDate >= today && a.PublishDate < tomorrow).CountAsync();
 
-    public Task DeleteArticle(int id)
-    {
-        throw new NotImplementedException();
+        return count;
     }
 }
+

@@ -7,10 +7,13 @@ public class Article
     public string Content { get; set; }
     public DateTime PublishDate { get; set; }
     public string Author { get; set; }
-    public List<string> Tags { get; set; }
+    public int CategoryId { get; set; }
+    public List<Comment> Comments { get; set; }
+    public List<Tag> Tags { get; set; }
+    public Category Category { get; set; }
+    public Tag Tag { get; set; }
     
-    public Article()
-    {
-        Tags = new List<string>();
-    }
+    public User AuthorUser { get; set; }
+    
+    //hem user hem strng author olmamalı gibi
 }

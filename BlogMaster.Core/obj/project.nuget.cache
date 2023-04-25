@@ -1,8 +1,25 @@
 {
   "version": 2,
-  "dgSpecHash": "M2fbIlG/LnNxQ6YvcI/MJl8T0t/bXku48APs0LQRfOcynZKV3u3LObbo2Y6wgKNB/w6oJR5kMgnK9RicheeBiA==",
+  "dgSpecHash": "cHRNN2DU1Xa0JoSTT0Rs9A0JZAiZxGgn6/dbuRR2bqGgpMvln9zOOVEJyFjxxXvHAK+IGAEgDEoSn1gQXL56DA==",
   "success": true,
   "projectFilePath": "/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Core/BlogMaster.Core.csproj",
-  "expectedPackageFiles": [],
-  "logs": []
+  "expectedPackageFiles": [
+    "/Users/yigit/.nuget/packages/mediatr/12.0.1/mediatr.12.0.1.nupkg.sha512",
+    "/Users/yigit/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
+    "/Users/yigit/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/11.1.0/mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
+    "/Users/yigit/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/7.0.0/microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "/Users/yigit/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0-preview.3.23174.8/microsoft.extensions.logging.abstractions.8.0.0-preview.3.23174.8.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package version outside of dependency constraint: MediatR.Extensions.Microsoft.DependencyInjection 11.1.0 requires MediatR (>= 11.0.0 && < 12.0.0) but version MediatR 12.0.1 was resolved.",
+      "libraryId": "MediatR",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
 }
