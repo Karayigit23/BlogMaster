@@ -34,7 +34,7 @@ public class ArticleRepository:IArticleRepository
         if (!string.IsNullOrEmpty(keyword))
         {
             query = query.Where(p =>
-                p.Title.Contains(keyword) || p.Content.Contains(keyword) || p.AuthorUser.UserName.Contains(keyword));
+                p.Title.Contains(keyword) || p.Content.Contains(keyword) || p.User.UserName.Contains(keyword));
         }
 
         if (categoryId != null)
@@ -62,7 +62,7 @@ public class ArticleRepository:IArticleRepository
 
     public async Task<List<Article>> GetArticlesByAuthor(string author)
     {
-        return await _dbContext.Article.Where(a => a.AuthorUser.UserName == author).ToListAsync();
+        return await _dbContext.Article.Where(a => a.User.UserName == author).ToListAsync();
     
     }
 
@@ -101,7 +101,7 @@ public class ArticleRepository:IArticleRepository
         DateTime today = DateTime.UtcNow.Date;
         DateTime tomorrow = today.AddDays(1);
         
-        int count = await _dbContext.Article.Where(a => a.AuthorUser.UserName == requestAuthor && a.PublishDate >= today && a.PublishDate < tomorrow).CountAsync();
+        int count = await _dbContext.Article.Where(a => a.User.UserName == requestAuthor && a.PublishDate >= today && a.PublishDate < tomorrow).CountAsync();
 
         return count;
     }

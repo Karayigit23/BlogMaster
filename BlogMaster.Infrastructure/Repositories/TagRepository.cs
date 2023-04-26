@@ -41,6 +41,13 @@ public class TagRepository:ITagRepository
         await _dbContext.SaveChangesAsync();
     }
 
+    public async Task DeleteTag(Tag tag)
+    {
+        
+        _dbContext.Tag.Remove(tag); 
+        await _dbContext.SaveChangesAsync();
+    }
+
     public async Task DeleteTag(int tagId)
     {
         var tagToRemove = await _dbContext.Tag.FindAsync(tagId);

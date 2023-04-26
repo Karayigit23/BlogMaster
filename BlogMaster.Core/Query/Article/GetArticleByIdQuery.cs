@@ -29,7 +29,7 @@ namespace BlogMaster.Core.Query.Article
             if (result==null)
             {
                 
-              //  throw new ArticleNotFoundException($"car not found carId: {request.Id}");
+              //  throw new ArticleNotFoundException($"article not found articleId: {request.Id}");
             }
 
             return result;
