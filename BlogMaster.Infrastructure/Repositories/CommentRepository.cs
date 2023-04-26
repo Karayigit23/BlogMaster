@@ -41,13 +41,11 @@ public class CommentRepository:ICommentRepository
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task DeleteComment(int commentId)
+    public async Task DeleteComment(Comment comment)
     {
-        var commentToRemove = await _dbContext.Comment.FindAsync(commentId);
-        if (commentToRemove != null)
-        {
-            _dbContext.Comment.Remove(commentToRemove);
-            await _dbContext.SaveChangesAsync();
-        }
+        _dbContext.Comment.Remove(comment); 
+        await _dbContext.SaveChangesAsync();
     }
+
+   
 }

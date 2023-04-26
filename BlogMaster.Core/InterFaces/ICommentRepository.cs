@@ -9,6 +9,6 @@ public interface ICommentRepository
     Task<List<Comment>> GetCommentsByArticleId(int articleId);
     Task<Comment> AddComment(Comment comment);
     Task UpdateComment(Comment comment);
-    Task DeleteComment(int commentId);
+    Task DeleteComment(Comment comment);
     
 }

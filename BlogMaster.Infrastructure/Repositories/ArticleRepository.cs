@@ -22,14 +22,41 @@ public class ArticleRepository:IArticleRepository
     {
         return await _dbContext.Article.FirstOrDefaultAsync(a => a.Id == id);
     }
+    
+    public  Task<List<Article>> Search(int? id,string? keyword,int? categoryId,int? tagId)
+    {
+        var query = _dbContext.Article.AsQueryable();
+        if (id != null)
+        {
+            query = query.Where(p => p.Id == id);
+        }
+
+        if (!string.IsNullOrEmpty(keyword))
+        {
+            query = query.Where(p =>
+                p.Title.Contains(keyword) || p.Content.Contains(keyword) || p.AuthorUser.UserName.Contains(keyword));
+        }
+
+        if (categoryId != null)
+        {
+            query = query.Where(p => p.CategoryId == categoryId);
+        }
+
+        if (tagId != null)
+        {
+            query = query.Where(p => p.Tags.Any(t => t.Id == tagId));
+        }
+
+        return query.ToListAsync();
+    }
 
     public async Task<List<Article>> GetArticlesByCategory(string category)
     {
          return await _dbContext.Article.Where(a => a.Category.Name == category).ToListAsync();
     }
-    public async Task<List<Article>> GetArticlesByTag(string tag)
+    public  Task<List<Article>> GetArticlesByTag(string tag)
     {
-        return await _dbContext.Article.Where(a => a.Tag.Name == tag).ToListAsync();
+        return  _dbContext.Article.Where(a => a.Tags.Any(t=>t.Name == tag)).ToListAsync();
 
     }
 

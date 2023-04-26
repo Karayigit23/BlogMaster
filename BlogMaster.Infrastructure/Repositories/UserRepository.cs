@@ -22,9 +22,9 @@ public class UserRepository:IUserRepository
         return await _dbContext.Set<User>().FindAsync(userId);
     }
 
-    public async Task<User> GetUserByUsername(string username)
+    public  Task<User> GetUserByUsername(string username)
     {
-        return await _dbContext.User.FirstOrDefaultAsync(u => u.UserName == username);
+        return  _dbContext.User.FirstOrDefaultAsync(u => u.UserName == username);
     }
 
     public async Task<User> AddUser(User user)
@@ -57,4 +57,4 @@ public class UserRepository:IUserRepository
 
 ////kurallar bi adam bir gün için 2 den fazla bolg yazamasın
 /// user black liste eklediği makaleyi ona hiç gözükmesi
-/// beğeni yada beğenmedi reaksiyon
+/// beğeni yada beğenmedi reaksiyon beğeni bool olur bir tablo oluşucak eğer makale Id ile

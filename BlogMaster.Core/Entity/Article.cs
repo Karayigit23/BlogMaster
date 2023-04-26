@@ -11,8 +11,6 @@ public class Article
     public List<Comment> Comments { get; set; }
     public List<Tag> Tags { get; set; }
     public Category Category { get; set; }
-    public Tag Tag { get; set; }
-    
     public User AuthorUser { get; set; }
     
     //hem user hem strng author olmamalı gibi
