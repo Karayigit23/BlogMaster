@@ -9,5 +9,5 @@ public interface ITagRepository
     Task<List<Tag>> GetTagsByArticleId(int articleId);
     Task<Tag> AddTag(Tag tag);
     Task UpdateTag(Tag tag);
-    Task DeleteTag(int tagId);
+    Task DeleteTag(Tag tag);
 }
