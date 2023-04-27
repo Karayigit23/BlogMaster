@@ -1,9 +1,7 @@
 using BlogMaster.Core.InterFaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+
 
 namespace BlogMaster.Core.Query.Article
 {
