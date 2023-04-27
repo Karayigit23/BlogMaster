@@ -1,0 +1,15 @@
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/bin/Debug/net7.0/BlogMaster.Infrastructure.deps.json
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/bin/Debug/net7.0/BlogMaster.Infrastructure.dll
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/bin/Debug/net7.0/BlogMaster.Infrastructure.pdb
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/bin/Debug/net7.0/BlogMaster.Core.dll
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/bin/Debug/net7.0/BlogMaster.Core.pdb
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/obj/Debug/net7.0/BlogMaster.Infrastructure.csproj.AssemblyReference.cache
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/obj/Debug/net7.0/BlogMaster.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/obj/Debug/net7.0/BlogMaster.Infrastructure.AssemblyInfoInputs.cache
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/obj/Debug/net7.0/BlogMaster.Infrastructure.AssemblyInfo.cs
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/obj/Debug/net7.0/BlogMaster.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/obj/Debug/net7.0/BlogMaster.Infrastructure.csproj.CopyComplete
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/obj/Debug/net7.0/BlogMaster.Infrastructure.dll
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/obj/Debug/net7.0/refint/BlogMaster.Infrastructure.dll
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/obj/Debug/net7.0/BlogMaster.Infrastructure.pdb
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/obj/Debug/net7.0/ref/BlogMaster.Infrastructure.dll

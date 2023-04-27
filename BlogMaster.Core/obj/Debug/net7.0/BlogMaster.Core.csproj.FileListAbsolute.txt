@@ -1,0 +1,12 @@
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Core/bin/Debug/net7.0/BlogMaster.Core.deps.json
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Core/bin/Debug/net7.0/BlogMaster.Core.dll
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Core/bin/Debug/net7.0/BlogMaster.Core.pdb
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Core/obj/Debug/net7.0/BlogMaster.Core.csproj.AssemblyReference.cache
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Core/obj/Debug/net7.0/BlogMaster.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Core/obj/Debug/net7.0/BlogMaster.Core.AssemblyInfoInputs.cache
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Core/obj/Debug/net7.0/BlogMaster.Core.AssemblyInfo.cs
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Core/obj/Debug/net7.0/BlogMaster.Core.csproj.CoreCompileInputs.cache
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Core/obj/Debug/net7.0/BlogMaster.Core.dll
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Core/obj/Debug/net7.0/refint/BlogMaster.Core.dll
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Core/obj/Debug/net7.0/BlogMaster.Core.pdb
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Core/obj/Debug/net7.0/ref/BlogMaster.Core.dll
