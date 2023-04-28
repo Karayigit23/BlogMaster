@@ -47,7 +47,7 @@ public class ArticleController : ControllerBase
 
     // GET api/article/category/categoryName
     [HttpGet("category/{category}")]
-    public async Task<ActionResult<List<Article>>> GetArticlesByCategory(string category)
+    public async Task<ActionResult<List<Article>>> GetArticlesByCategory(int category)
     {
         var articles = await _articleRepository.GetArticlesByCategory(category);
         return Ok(articles);

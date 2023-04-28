@@ -7,7 +7,7 @@ public interface IArticleRepository
     
     Task<Article> GetArticleById(int id);
     
-    Task<List<Article>> GetArticlesByCategory(string category);
+    Task<List<Article>> GetArticlesByCategory(int categoryId);
     Task<List<Article>> GetArticlesByTag(string tagId);
     Task<List<Article>> GetArticlesByAuthor(string author);
    

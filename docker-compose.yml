@@ -1,0 +1,19 @@
+﻿version: "3.4"
+
+services:
+  api:
+    image: sw
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Prod"
+  
+  db:
+    image: "mcr.microsoft.com/azure-sql-edge"
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "MyPass@word"
+      ACCEPT_EULA: "Y"

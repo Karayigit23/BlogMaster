@@ -22,7 +22,12 @@ public class ArticleRepository:IArticleRepository
     {
         return await _dbContext.Article.FirstOrDefaultAsync(a => a.Id == id);
     }
-    
+
+    public async Task<List<Article>> GetArticlesByCategory(int categoryId)
+    {
+        return await _dbContext.Article.Where(a => a.CategoryId == categoryId).ToListAsync();
+    }
+
     public  Task<List<Article>> Search(int? id,string? keyword,int? categoryId,int? tagId)
     {
         var query = _dbContext.Article.AsQueryable();
