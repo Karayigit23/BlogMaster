@@ -54,25 +54,7 @@ public class ArticleRepository:IArticleRepository
 
         return query.ToListAsync();
     }
-
-    public async Task<List<Article>> GetArticlesByCategory(string category)
-    {
-         return await _dbContext.Article.Where(a => a.Category.Name == category).ToListAsync();
-    }
-    public  Task<List<Article>> GetArticlesByTag(string tag)
-    {
-        return  _dbContext.Article.Where(a => a.Tags.Any(t=>t.Name == tag)).ToListAsync();
-
-    }
-
-    public async Task<List<Article>> GetArticlesByAuthor(string author)
-    {
-        return await _dbContext.Article.Where(a => a.User.UserName == author).ToListAsync();
     
-    }
-
-   
-
     public async Task<List<Article>> GetAllArticles()
     {
         return await _dbContext.Article.ToListAsync();

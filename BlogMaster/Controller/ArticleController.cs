@@ -1,5 +1,8 @@
+using BlogMaster.Core.Command.ArticleCommand;
 using BlogMaster.Core.Entity;
 using BlogMaster.Core.InterFaces;
+using BlogMaster.Core.Query.Article;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogMaster.Controller;
@@ -9,19 +12,19 @@ namespace BlogMaster.Controller;
 public class ArticleController : ControllerBase
 {
     
-    private readonly IArticleRepository _articleRepository;
+    private readonly IMediator _mediator;
 
     // Inject the ArticleRepository via constructor injection
-    public ArticleController(IArticleRepository articleRepository)
+    public ArticleController(IMediator mediator)
     {
-        _articleRepository = articleRepository;
+        _mediator = mediator;
     }
 
     // GET api/article
     [HttpGet]
     public async Task<ActionResult<List<Article>>> GetAllArticles()
     {
-        var articles = await _articleRepository.GetAllArticles();
+        var articles = await _mediator.Send(new GetAllArticleQuery());
         return Ok(articles);
     }
 
@@ -29,51 +32,44 @@ public class ArticleController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<Article>> GetArticleById(int id)
     {
-        var article = await _articleRepository.GetArticleById(id);
+        
+        
+        var article = await _mediator.Send(request: new GetArticleByIdQuery{Id = id});
         if (article == null)
         {
             return NotFound();
         }
         return Ok(article);
     }
+    
 
     // GET api/article/search?id=1&keyword=test&categoryId=2&tagId=3
     [HttpGet("search")]
     public async Task<ActionResult<List<Article>>> Search(int? id, string? keyword, int? categoryId, int? tagId)
     {
-        var articles = await _articleRepository.Search(id, keyword, categoryId, tagId);
-        return Ok(articles);
+
+        var query = new SearchArticleQuery {Id = id,Keyword = keyword,CategoryId = categoryId,TagId = tagId };
+        var result = await _mediator.Send(query);
+        return Ok(result);
     }
 
     // GET api/article/category/categoryName
     [HttpGet("category/{category}")]
     public async Task<ActionResult<List<Article>>> GetArticlesByCategory(int category)
     {
-        var articles = await _articleRepository.GetArticlesByCategory(category);
-        return Ok(articles);
+
+        var query = new GetArticlesByCategoryQuery {CategoryId = category };
+        var result = await _mediator.Send(query);
+        return Ok(result);
     }
 
-    // GET api/article/tag/tagName
-    [HttpGet("tag/{tag}")]
-    public async Task<ActionResult<List<Article>>> GetArticlesByTag(string tag)
-    {
-        var articles = await _articleRepository.GetArticlesByTag(tag);
-        return Ok(articles);
-    }
-
-    // GET api/article/author/authorName
-    [HttpGet("author/{author}")]
-    public async Task<ActionResult<List<Article>>> GetArticlesByAuthor(string author)
-    {
-        var articles = await _articleRepository.GetArticlesByAuthor(author);
-        return Ok(articles);
-    }
+    
 
     // POST api/article
     [HttpPost]
     public async Task<ActionResult> AddArticle(Article article)
     {
-        await _articleRepository.AddArticle(article);
+        await _mediator.Send(article);
         return Ok();
     }
 
@@ -85,7 +81,9 @@ public class ArticleController : ControllerBase
         {
             return BadRequest();
         }
-        await _articleRepository.UpdateArticle(article);
+
+        article.Id = id;
+        await _mediator.Send(article);
         return Ok();
     }
 
@@ -93,21 +91,10 @@ public class ArticleController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteArticle(int id)
     {
-        var article = await _articleRepository.GetArticleById(id);
-        if (article == null)
-        {
-            return NotFound();
-        }
-        await _articleRepository.DeleteArticle(article);
-        return Ok();
+        var query = new DeleteArticleCommand { Id = id };
+        var result=await _mediator.Send(query);
+        return Ok(result);
     }
 
-    // GET api/article/author/authorName/count
-    [HttpGet("author/{author}/count")]
-    public async Task<ActionResult<int>> GetTodaysArticleCount(string author)
-    {
-        var count = await _articleRepository.GetTodaysArticleCount(author);
-        return Ok(count);
-    }
 }
 
