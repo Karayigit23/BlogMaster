@@ -4,11 +4,11 @@ using Microsoft.Extensions.Logging;
 
 namespace BlogMaster.Core.Query.ArticleVote;
 
-public class GetUserVotesQuery : IRequest<List<Entity.ArticleVote>>
+public class GetArticleVotesByUserQuery : IRequest<List<Entity.ArticleVote>>
 {
     public int UserId { get; set; }
 }
-public class GetUserVotesQueryHandler : IRequestHandler<GetUserVotesQuery, List<Entity.ArticleVote>> 
+public class GetUserVotesQueryHandler : IRequestHandler<GetArticleVotesByUserQuery, List<Entity.ArticleVote>> 
 {
         private readonly IArticleVoteRepository _userVoteRepository;
         private readonly Logger<GetUserVotesQueryHandler> _logger;
@@ -20,7 +20,7 @@ public class GetUserVotesQueryHandler : IRequestHandler<GetUserVotesQuery, List<
             _logger = logger;
         }
 
-        public async Task<List<Entity.ArticleVote>> Handle( GetUserVotesQuery request, CancellationToken cancellationToken)
+        public async Task<List<Entity.ArticleVote>> Handle( GetArticleVotesByUserQuery request, CancellationToken cancellationToken)
         {
 
             _logger.LogInformation(message: $"{request.UserId} User came");
