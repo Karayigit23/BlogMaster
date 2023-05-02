@@ -19,48 +19,42 @@ namespace BlogMaster.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Comment>>> GetAllComments()
+        public async Task<List<Comment>> GetAllComments()
         {
             var comments = await _mediator.Send(new GetAllCommentQuery());
-            return Ok(comments);
+            return comments;
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Comment>> GetCommentById(int id)
+        public async Task<Comment> GetCommentById(int id)
         {
             var comment = await _mediator.Send(request: new GetCommentByIdQuery { Id = id });
-            if (comment == null)
-            {
-                return NotFound();
-            }
-            return Ok(comment);
+            
+            return comment;
         }
 
         [HttpGet("article/{articleId}")]
-        public async Task<ActionResult<List<Comment>>> GetCommentsByArticleId(int articleId)
+        public async Task<List<Comment>> GetCommentsByArticleId(int articleId)
         {
             var comments = await _mediator.Send(request: new GetCommentsByArticleIdQuery { ArticleId = articleId });
-            return Ok(comments);
+            return comments;
         }
 
         [HttpPost]
-        public async Task<ActionResult<Comment>> AddComment([FromBody] Comment comment)
+        public async Task AddComment([FromBody] Comment comment)
         {
             await _mediator.Send(comment);
-            return Ok();
+           
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateComment(int id, [FromBody] Comment comment)
+        public async Task UpdateComment(int id, [FromBody] Comment comment)
         {
-            if (id != comment.Id)
-            {
-                return BadRequest();
-            }
+          
 
             comment.Id = id;
             await _mediator.Send(comment);
-            return NoContent();
+            
         }
 
         [HttpDelete("{id}")]

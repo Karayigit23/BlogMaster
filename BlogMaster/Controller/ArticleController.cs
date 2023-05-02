@@ -22,78 +22,72 @@ public class ArticleController : ControllerBase
 
     // GET api/article
     [HttpGet]
-    public async Task<ActionResult<List<Article>>> GetAllArticles()
+    public async Task<List<Article>> GetAllArticles()
     {
         var articles = await _mediator.Send(new GetAllArticleQuery());
-        return Ok(articles);
+        return articles;
     }
 
     // GET api/article/{id}
     [HttpGet("{id}")]
-    public async Task<ActionResult<Article>> GetArticleById(int id)
+    public async Task<Article> GetArticleById(int id)
     {
         
         
         var article = await _mediator.Send(request: new GetArticleByIdQuery{Id = id});
-        if (article == null)
-        {
-            return NotFound();
-        }
-        return Ok(article);
+        
+        return article;
     }
     
 
     // GET api/article/search?id=1&keyword=test&categoryId=2&tagId=3
     [HttpGet("search")]
-    public async Task<ActionResult<List<Article>>> Search(int? id, string? keyword, int? categoryId, int? tagId)
+    public async Task<List<Article>> Search(int? id, string? keyword, int? categoryId, int? tagId)
     {
 
         var query = new SearchArticleQuery {Id = id,Keyword = keyword,CategoryId = categoryId,TagId = tagId };
         var result = await _mediator.Send(query);
-        return Ok(result);
+        return result;
     }
 
     // GET api/article/category/categoryName
     [HttpGet("category/{category}")]
-    public async Task<ActionResult<List<Article>>> GetArticlesByCategory(int category)
+    public async Task<List<Article>> GetArticlesByCategory(int category)
     {
 
         var query = new GetArticlesByCategoryQuery {CategoryId = category };
         var result = await _mediator.Send(query);
-        return Ok(result);
+        return result;
     }
 
     
 
     // POST api/article
     [HttpPost]
-    public async Task<ActionResult> AddArticle(Article article)
+    public async Task AddArticle(Article article)
     {
         await _mediator.Send(article);
-        return Ok();
+        
     }
 
     // PUT api/article/5
     [HttpPut("{id}")]
-    public async Task<ActionResult> UpdateArticle(int id, Article article)
+    public async Task UpdateArticle(int id, Article article)
     {
-        if (id != article.Id)
-        {
-            return BadRequest();
-        }
+       
 
         article.Id = id;
         await _mediator.Send(article);
-        return Ok();
+       
     }
 
     // DELETE api/article/5
     [HttpDelete("{id}")]
-    public async Task<ActionResult> DeleteArticle(int id)
+    public async Task DeleteArticle(int id)
     {
         var query = new DeleteArticleCommand { Id = id };
         var result=await _mediator.Send(query);
-        return Ok(result);
+      
     }
 
 }

@@ -19,20 +19,20 @@ namespace BlogMaster.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddVote([FromBody] CreateArticleVoteCommand command)
+        public async Task AddVote([FromBody] CreateArticleVoteCommand command)
         {
             await _mediator.Send(command);
-            return Ok();
+           
             
             
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateVote(int id,[FromBody] UpdateArticleVoteCommand command)
+        public async Task UpdateVote(int id,[FromBody] UpdateArticleVoteCommand command)
         {
             command.Id = id;
             await _mediator.Send(command);
-            return Ok();
+           
             
         }
 
