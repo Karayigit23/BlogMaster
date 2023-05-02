@@ -28,11 +28,6 @@ public class CategoryRepository:ICategoryRepository
         await _dbContext.SaveChangesAsync();
         return category;
     }
-    public async Task<List<Article>> GetArticlesByCategoryId(int categoryId)
-    {
-        return await _dbContext.Article.Where(a => a.CategoryId == categoryId).ToListAsync();
-    }
-
     public async Task UpdateCategory(Category category)
     {
        _dbContext.Set<Category>().Update(category);
@@ -46,7 +41,5 @@ public class CategoryRepository:ICategoryRepository
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task DeleteCategory(int categoryId)
-    {
-    }
+    
 }

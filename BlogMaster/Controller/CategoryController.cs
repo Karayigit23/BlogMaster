@@ -34,13 +34,7 @@ namespace BlogMaster.Controllers
             
             return category;
         }
-
-        [HttpGet("{id}/articles")]
-        public async Task<List<Article>> GetArticlesByCategoryId(int Categoryid)
-        {
-            var articles = await _mediator.Send(request: new GetArticlesByCategoryQuery { CategoryId = Categoryid });
-            return articles;
-        }
+        
 
         [HttpPost]
         public async Task AddCategory([FromBody]Category category)
