@@ -54,7 +54,7 @@ namespace BlogMaster.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateCategory(int id, Category category)
+        public async Task<ActionResult> UpdateCategory(int id,[FromBody] Category category)
         {
             if (id != category.Id)
             {
