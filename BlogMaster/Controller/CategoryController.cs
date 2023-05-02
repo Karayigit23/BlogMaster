@@ -21,49 +21,39 @@ namespace BlogMaster.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> GetAllCategories()
+        public async Task<List<Category>> GetAllCategories()
         {
             var categories = await _mediator.Send(new GetAllCategoryQuery());
-            return Ok(categories);
+            return categories;
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetCategoryById(int id)
+        public async Task<Category> GetCategoryById(int id)
         {
             var category = await _mediator.Send(request: new GetCategoryByIdQuery { Id = id });
-            if (category == null)
-            {
-                return NotFound();
-            }
-            return Ok(category);
+            
+            return category;
         }
 
         [HttpGet("{id}/articles")]
-        public async Task<ActionResult<IEnumerable<Article>>> GetArticlesByCategoryId(int Categoryid)
+        public async Task<List<Article>> GetArticlesByCategoryId(int Categoryid)
         {
             var articles = await _mediator.Send(request: new GetArticlesByCategoryQuery { CategoryId = Categoryid });
-            return Ok(articles);
+            return articles;
         }
 
         [HttpPost]
-        public async Task<ActionResult<Category>> AddCategory(Category category)
+        public async Task AddCategory([FromBody]Category category)
         {
-            await _mediator.Send(category);
-            return Ok();
-
+           await _mediator.Send(category);
+           
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateCategory(int id,[FromBody] Category category)
+        public async Task UpdateCategory(int id,[FromBody] Category category)
         {
-            if (id != category.Id)
-            {
-                return BadRequest();
-            }
-
             category.Id = id;
             await _mediator.Send(category);
-            return Ok();
         }
 
         [HttpDelete("{id}")]
