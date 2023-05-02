@@ -17,9 +17,10 @@ public class DeleteCommentCommandHandler : IRequestHandler<DeleteCommentCommand>
         _commentRepository = commentRepository;
     }
      
-    public async Task Handle(DeleteCommentCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(DeleteCommentCommand request, CancellationToken cancellationToken)
     {
         var comment = await _commentRepository.GetCommentById(request.Id);
         await _commentRepository.DeleteComment(comment);
+        return Unit.Value;
     }
 }

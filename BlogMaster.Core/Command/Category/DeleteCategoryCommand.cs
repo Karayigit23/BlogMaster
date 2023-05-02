@@ -16,10 +16,11 @@ public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryComman
         _categoryRepository = categoryRepository;
     }
     //EĞER BULAMAZSA HATA FIRLAT
-    public async Task Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
     {
         var Category = await _categoryRepository.GetCategoryById(request.Id);
        
         await _categoryRepository.DeleteCategory(Category);
+        return Unit.Value;
     }
 }

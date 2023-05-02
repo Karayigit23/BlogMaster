@@ -41,7 +41,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IArticleRepository, ArticleRepository>();
 builder.Services.AddScoped<IArticleVoteRepository, ArticleVoteRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddMediatR(typeof(CreateArticleCommand));
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+
+//builder.Services.AddMediatR(typeof(CreateArticleCommand));
 
 builder.Services.AddDbContext<DbContext>(p => p.UseSqlServer(builder.Configuration.GetValue<string>("sqlConnection")));
 

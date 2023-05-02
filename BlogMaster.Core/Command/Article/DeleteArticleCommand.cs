@@ -17,10 +17,11 @@ public class DeleteArticleCommandHandler : IRequestHandler<DeleteArticleCommand>
         _articleRepository = articleRepository;
     }
     //EĞER BULAMAZSA HATA FIRLAT
-    public async Task Handle(DeleteArticleCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(DeleteArticleCommand request, CancellationToken cancellationToken)
     {
         var Article = await _articleRepository.GetArticleById(request.Id);
        
         await _articleRepository.DeleteArticle(Article);
+        return Unit.Value;
     }
 }

@@ -16,11 +16,11 @@ public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand>
     {
         _userRepository = userRepository;
     }
-    public async Task Handle(DeleteUserCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
     {
         var User = await _userRepository.GetUserById(request.Id);
        
         await _userRepository.DeleteUser(User);
-        
+        return Unit.Value;
     }
 }

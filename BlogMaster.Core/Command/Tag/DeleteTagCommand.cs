@@ -18,12 +18,13 @@ namespace BlogMaster.Core.Command.Tag;
             _tagRepository = tagRepository;
         }
 
-        public async Task Handle(DeleteTagCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteTagCommand request, CancellationToken cancellationToken)
         {
           
 
             var result =await _tagRepository.GetTagById(request.Id);
             await _tagRepository.DeleteTag(result);
-          
+            return Unit.Value;
+
         }
     }

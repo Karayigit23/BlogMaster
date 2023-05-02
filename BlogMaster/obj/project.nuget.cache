@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "OXpyip07/wJyUxqqWQbSYx5NEctZyNEfOQvEGOW6vve1l/edok72KPdEC637vbwUoG+5r1ANbNnHxV/HA8sTIg==",
+  "dgSpecHash": "AURxV93hQBDF3gd9C9tFGpEb0U0gPUiHI8KS+F0/4XzjgKNGD5ViwmMrk9nyTigiXC3+tBBBnysAWD+kQ8CkCg==",
   "success": true,
   "projectFilePath": "/Users/yigit/RiderProjects/BlogMaster/BlogMaster/BlogMaster.csproj",
   "expectedPackageFiles": [
     "/Users/yigit/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/Users/yigit/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",
-    "/Users/yigit/.nuget/packages/mediatr/12.0.1/mediatr.12.0.1.nupkg.sha512",
-    "/Users/yigit/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
+    "/Users/yigit/.nuget/packages/mediatr/11.1.0/mediatr.11.1.0.nupkg.sha512",
+    "/Users/yigit/.nuget/packages/mediatr.contracts/1.0.1/mediatr.contracts.1.0.1.nupkg.sha512",
     "/Users/yigit/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/11.1.0/mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
     "/Users/yigit/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "/Users/yigit/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
@@ -114,16 +114,5 @@
     "/Users/yigit/.nuget/packages/system.xml.xmldocument/4.3.0/system.xml.xmldocument.4.3.0.nupkg.sha512",
     "/Users/yigit/.nuget/packages/yamldotnet/11.2.1/yamldotnet.11.2.1.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1608",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Detected package version outside of dependency constraint: MediatR.Extensions.Microsoft.DependencyInjection 11.1.0 requires MediatR (>= 11.0.0 && < 12.0.0) but version MediatR 12.0.1 was resolved.",
-      "libraryId": "MediatR",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    }
-  ]
+  "logs": []
 }
