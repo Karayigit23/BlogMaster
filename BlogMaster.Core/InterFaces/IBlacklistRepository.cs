@@ -5,7 +5,7 @@ namespace BlogMaster.Core.InterFaces;
 public interface IBlacklistRepository
 {
     Task<List<BlackList>>  GetAll();
-    Task AddToBlacklist(int articleId, int userId);
+    Task AddToBlacklist(BlackList blackList);
     Task<BlackList> GetBlacklistById(int id);
     
     Task<List<BlackList>> GetBlacklistByUserId(int userId);

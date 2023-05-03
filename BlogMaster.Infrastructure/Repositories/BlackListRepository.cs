@@ -19,23 +19,16 @@ public class BlackListRepository:IBlacklistRepository
         return await _dbContext.BlackList.ToListAsync();
     }
 
-    public async Task AddToBlacklist(int articleId, int userId)
+    public async Task AddToBlacklist(BlackList blackList)
     {
 
         var existingBlacklist = await _dbContext.BlackList
-            .FirstOrDefaultAsync(b => b.ArticleId == articleId && b.UserId == userId);
+            .FirstOrDefaultAsync(b => b.ArticleId == blackList.ArticleId  && b.UserId == blackList.UserId);
 
         if (existingBlacklist == null)
         {
-            // Create a new blacklist entry for the article and user
-            var blacklist = new BlackList
-            {
-                ArticleId = articleId,
-                UserId = userId
-            };
-
-            // Add the blacklist entry to the database
-            await _dbContext.BlackList.AddAsync(blacklist);
+            
+            await _dbContext.BlackList.AddAsync(blackList);
             await _dbContext.SaveChangesAsync();
 
         }
