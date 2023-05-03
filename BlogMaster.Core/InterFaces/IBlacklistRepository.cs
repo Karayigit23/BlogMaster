@@ -10,7 +10,7 @@ public interface IBlacklistRepository
     
     Task<List<BlackList>> GetBlacklistByUserId(int userId);
 
-    Task<List<BlackList>> GetBlacklistedUsersByArticleId(int articleId);
+    Task<List<BlackList>> GetBlacklistedByArticleId(int articleId);
 
     Task DeleteBlaclistItem(BlackList Blacklist);
 }

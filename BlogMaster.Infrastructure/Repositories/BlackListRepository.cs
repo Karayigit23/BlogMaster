@@ -46,7 +46,7 @@ public class BlackListRepository:IBlacklistRepository
         return await _dbContext.BlackList.Where(p => p.UserId == userId).ToListAsync();
     }
 
-    public async Task<List<BlackList>> GetBlacklistedUsersByArticleId(int articleId)
+    public async Task<List<BlackList>> GetBlacklistedByArticleId(int articleId)
     {
         return await _dbContext.BlackList.Where(p => p.ArticleId == articleId).ToListAsync();
     }
