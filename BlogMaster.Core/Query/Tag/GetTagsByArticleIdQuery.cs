@@ -29,7 +29,7 @@ public class GetTagsByArticleIdQueryHandler : IRequestHandler<GetTagsByArticleId
         {
 
             //  throw new commandNotFoundException($"user not found articleId: {request.articleId}");
-            return null;
+          
         }
 
         return result;
