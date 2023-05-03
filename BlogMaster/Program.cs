@@ -5,6 +5,7 @@ using BlogMaster.Infrastructure;
 using BlogMaster.Infrastructure.Repositories;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +30,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var serviceProvider = scope.ServiceProvider;
-    var context = serviceProvider.GetService<DbContext>();
+    var context = serviceProvider.GetService<AppDbContext>();
     context.Database.EnsureCreated();
     context.Database.Migrate();
 }
