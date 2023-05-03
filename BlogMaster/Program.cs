@@ -1,6 +1,7 @@
 
 using BlogMaster.Core.Command.ArticleCommand;
 using BlogMaster.Core.InterFaces;
+using BlogMaster.Infrastructure;
 using BlogMaster.Infrastructure.Repositories;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,8 @@ builder.Services.AddMediatR(typeof(CreateArticleCommand));
 builder.Services.AddSwaggerDocument(p=>p.PostProcess=(o => { o.Info.Title = "BlogMaster";}));
 
 builder.Services.AddDbContext<DbContext>(p => p.UseSqlServer(builder.Configuration.GetValue<string>("sqlConnection")));
+
+
 
 
 builder.Services.AddControllers();

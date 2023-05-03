@@ -14,4 +14,5 @@ public class AppDbContext:DbContext
     public DbSet<Tag> Tag { get; set; }
     public DbSet<User> User { get; set; }
     public DbSet<ArticleVote>ArticleVote { get; set; }
+    public DbSet<BlackList>BlackList { get; set; }
 }
