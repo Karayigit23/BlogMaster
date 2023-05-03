@@ -12,5 +12,5 @@ public interface IBlacklistRepository
 
     Task<List<BlackList>> GetBlacklistedByArticleId(int articleId);
 
-    Task DeleteBlaclistItem(BlackList Blacklist);
+    Task DeleteBlaclist(BlackList Blacklist);
 }

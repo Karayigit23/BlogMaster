@@ -51,7 +51,7 @@ public class BlackListRepository:IBlacklistRepository
         return await _dbContext.BlackList.Where(p => p.ArticleId == articleId).ToListAsync();
     }
 
-    public async Task DeleteBlaclistItem(BlackList Blacklist)
+    public async Task DeleteBlaclist(BlackList Blacklist)
     {
         _dbContext.BlackList.Remove(Blacklist); 
         await _dbContext.SaveChangesAsync();
