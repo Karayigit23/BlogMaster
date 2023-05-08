@@ -19,12 +19,12 @@ public class ArticleController : ControllerBase
     {
         _mediator = mediator;
     }
-
+    
     // GET api/article
     [HttpGet]
-    public async Task<List<Article>> GetAllArticles()
+    public async Task<List<Article>> GetAllArticles([FromQuery] int Page, [FromQuery] int Size)
     {
-        var articles = await _mediator.Send(new GetAllArticleQuery());
+        var articles = await _mediator.Send(new GetAllArticleQuery{Page = Page,Size = Size});
         return articles;
     }
 
@@ -42,10 +42,10 @@ public class ArticleController : ControllerBase
 
     // GET api/article/search?id=1&keyword=test&categoryId=2&tagId=3
     [HttpGet("search")]
-    public async Task<List<Article>> Search(int? id, string? keyword, int? categoryId, int? tagId)
+    public async Task<List<Article>> Search(int? id, string? keyword, int? categoryId, int? tagId,[FromQuery]int page,[FromQuery]int size)
     {
 
-        var query = new SearchArticleQuery {Id = id,Keyword = keyword,CategoryId = categoryId,TagId = tagId };
+        var query = new SearchArticleQuery {Id = id,Keyword = keyword,CategoryId = categoryId,TagId = tagId,Page = page,Size = size};
         var result = await _mediator.Send(query);
         return result;
     }
@@ -64,7 +64,7 @@ public class ArticleController : ControllerBase
 
     // POST api/article
     [HttpPost]
-    public async Task AddArticle(Article article)
+    public async Task AddArticle([FromBody]CreateArticleCommand article)
     {
         await _mediator.Send(article);
         
@@ -72,7 +72,7 @@ public class ArticleController : ControllerBase
 
     // PUT api/article/5
     [HttpPut("{id}")]
-    public async Task UpdateArticle(int id, Article article)
+    public async Task UpdateArticle(int id,[FromBody] UpdateArticleCommand article)
     {
        
 

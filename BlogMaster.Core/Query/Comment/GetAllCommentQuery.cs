@@ -10,6 +10,13 @@ public class GetAllCommentQuery:IRequest<List<Entity.Comment>>
     {
         private readonly ICommentRepository _commentRepository;
         private readonly ILogger<GetAllCommentQueryHandler> _logger;
+
+        public GetAllCommentQueryHandler(ICommentRepository commentRepository,
+            ILogger<GetAllCommentQueryHandler> logger)
+        {
+            _commentRepository = commentRepository;
+            _logger = logger;
+        }
         
         public async Task<List<Entity.Comment>> Handle(GetAllCommentQuery request, CancellationToken cancellationToken)
         {

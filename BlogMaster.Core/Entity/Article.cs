@@ -8,14 +8,14 @@ public class Article:EntityBase
     public DateTime PublishDate { get; set; }
     
     public string UserName { get; set; }
+    public int UserId { get; set; }
     public int CategoryId { get; set; }
     public List<Comment> Comments { get; set; }
-    public List<Tag> Tags { get; set; }
+    public List<ArticleTag> ArticleTags { get; set; }
     public Category Category { get; set; }
     
     public User User { get; set; }
     
-    public List<ArticleTag> ArticleTags { get; set; } 
     
     //hem user hem strng author olmamalı gibi
 }

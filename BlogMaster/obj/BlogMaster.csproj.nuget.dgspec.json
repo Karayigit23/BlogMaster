@@ -179,9 +179,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
+            "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
-              "version": "[8.0.0-preview.3.23174.2, )"
+              "version": "[8.0.0-preview.3.23174.8, )"
             },
             "Microsoft.Extensions.Logging": {
               "target": "Package",

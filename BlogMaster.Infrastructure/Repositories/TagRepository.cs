@@ -25,7 +25,7 @@ public class TagRepository:ITagRepository
 
     public async Task<List<Tag>> GetTagsByArticleId(int articleId)
     {
-        return await _dbContext.Tag.Where(t => t.ArticleTags.Any(at => at.ArticleId == articleId)).ToListAsync();
+        return await _dbContext.ArticleTag.Where(t => t.ArticleId == articleId).Select(p=>p.Tag).ToListAsync();
     }
 
     public async Task<Tag> AddTag(Tag tag)

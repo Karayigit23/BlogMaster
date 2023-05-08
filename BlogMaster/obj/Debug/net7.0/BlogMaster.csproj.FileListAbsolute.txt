@@ -1,5 +1,3 @@
-/Users/yigit/RiderProjects/BlogMaster/BlogMaster/bin/Debug/net7.0/Appsetting.json
-/Users/yigit/RiderProjects/BlogMaster/BlogMaster/bin/Debug/net7.0/appsettings.Development.json
 /Users/yigit/RiderProjects/BlogMaster/BlogMaster/bin/Debug/net7.0/appsettings.json
 /Users/yigit/RiderProjects/BlogMaster/BlogMaster/bin/Debug/net7.0/BlogMaster
 /Users/yigit/RiderProjects/BlogMaster/BlogMaster/bin/Debug/net7.0/BlogMaster.deps.json

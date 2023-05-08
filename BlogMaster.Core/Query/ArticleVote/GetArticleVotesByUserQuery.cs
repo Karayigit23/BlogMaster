@@ -11,9 +11,9 @@ public class GetArticleVotesByUserQuery : IRequest<List<Entity.ArticleVote>>
 public class GetUserVotesQueryHandler : IRequestHandler<GetArticleVotesByUserQuery, List<Entity.ArticleVote>> 
 {
         private readonly IArticleVoteRepository _userVoteRepository;
-        private readonly Logger<GetUserVotesQueryHandler> _logger;
+        private readonly ILogger<GetUserVotesQueryHandler> _logger;
 
-        public GetUserVotesQueryHandler(IArticleVoteRepository userRepository, Logger<GetUserVotesQueryHandler>
+        public GetUserVotesQueryHandler(IArticleVoteRepository userRepository, ILogger<GetUserVotesQueryHandler>
             logger)
         {
             _userVoteRepository = userRepository;

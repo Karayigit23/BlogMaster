@@ -9,6 +9,7 @@ namespace BlogMaster.Core.Command.Tag
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int ArticleId { get; set; }
     }
 
     public class CreateTagHandler : IRequestHandler<CreateTagCommand, Entity.Tag>
@@ -26,7 +27,10 @@ namespace BlogMaster.Core.Command.Tag
             {
                 Id = request.Id,
                 Name = request.Name,
-                Articles = new List<Article>() // Eğer Articles listesi de eklenmek isteniyorsa burada initialize edilebilir
+                ArticleTags = new List<ArticleTag>()
+                {
+                    new ArticleTag { ArticleId = request.ArticleId }
+                }
             };
 
             await _tagRepository.AddTag(tag);

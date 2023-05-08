@@ -10,7 +10,7 @@ public class CreateCommentCommand : IRequest<Entity.Comment>
     public DateTime PublishDate { get; set; }
     public string Author { get; set; }
     public int UserId { get; set; }
-    public Article Article { get; set; }
+  
     public int ArticleId { get; set; }
 }
 public class CreateCommentCommandHandler : IRequestHandler<CreateCommentCommand, Entity.Comment>
@@ -30,7 +30,7 @@ public class CreateCommentCommandHandler : IRequestHandler<CreateCommentCommand,
             PublishDate = request.PublishDate,
             Author = request.Author,
             UserId = request.UserId,
-            Article = request.Article,
+            
             ArticleId = request.ArticleId
         };
 

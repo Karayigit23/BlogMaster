@@ -26,7 +26,7 @@ public class UpdateArticleVoteCommandHandler : IRequestHandler<UpdateArticleVote
         var vote = await _articleVoteRepository.GetById(request.Id);
         if (vote==null)
         {
-            /// throw new exaption () hata fırlat eşleşiyosa çünkü eşleşen 
+            throw new Exception("ArticleVote not found."); 
         }
         else
         {

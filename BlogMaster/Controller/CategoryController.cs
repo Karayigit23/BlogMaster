@@ -37,14 +37,14 @@ namespace BlogMaster.Controllers
         
 
         [HttpPost]
-        public async Task AddCategory([FromBody]Category category)
+        public async Task AddCategory([FromBody]CreateCategoryCommand category)
         {
            await _mediator.Send(category);
            
         }
 
         [HttpPut("{id}")]
-        public async Task UpdateCategory(int id,[FromBody] Category category)
+        public async Task UpdateCategory(int id,[FromBody] UpdateCategoryCommand category)
         {
             category.Id = id;
             await _mediator.Send(category);

@@ -10,7 +10,8 @@ public class CreateArticleCommand:IRequest<Article>
     public string Content { get; set; }
     public DateTime PublishDate { get; set; }
     public int CategoryId { get; set; }
-    public string User { get; set; }
+    public int UserId { get; set; }
+    public string UserName { get; set; }
     
 }
 
@@ -30,7 +31,7 @@ public class CreateArticleHandler : IRequestHandler<CreateArticleCommand, Articl
     public async Task<Article> Handle(CreateArticleCommand request, CancellationToken cancellationToken)
     {
         
-        int todaysArticleCount = await _articleRepository.GetTodaysArticleCount(request.User);
+        int todaysArticleCount = await _articleRepository.GetTodaysArticleCount(request.UserId);
 
        
         if (todaysArticleCount >= 2)
@@ -45,7 +46,9 @@ public class CreateArticleHandler : IRequestHandler<CreateArticleCommand, Articl
             Content = request.Content,
             PublishDate = request.PublishDate,
             CategoryId = request.CategoryId,
-            UserName = request.User
+            UserName = request.UserName,
+            UserId = request.UserId
+            
         };
 
     

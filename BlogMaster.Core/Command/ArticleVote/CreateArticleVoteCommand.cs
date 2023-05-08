@@ -30,8 +30,19 @@ public class CreateArticleVoteCommandHandler : IRequestHandler<CreateArticleVote
     public async Task<Entity.ArticleVote> Handle(CreateArticleVoteCommand request, CancellationToken cancellationToken)
     {
         var exvote = _articlevoteRepository.GetById(request.Id);
-        if (exvote == null)
+        
+        if (request.ArticleId == 0 || request.UserId == 0)
         {
+            throw new ArgumentException("ArticleId and UserId cannot be zero.");
+        }
+    
+        if (request.Like && request.Dislike)
+        {
+            throw new ArgumentException("Cannot vote both Like and Dislike.");
+        }
+        
+
+        
             var vote = new Entity.ArticleVote
             {
                 ArticleId = request.ArticleId,
@@ -41,12 +52,8 @@ public class CreateArticleVoteCommandHandler : IRequestHandler<CreateArticleVote
             };
             await _articlevoteRepository.AddVote(vote);
             return vote;
-        }
-        else
-        {
-            throw new Exception();//var olan bir veri oluşturulamaz
-
-        }
+        
+        
 
 
 

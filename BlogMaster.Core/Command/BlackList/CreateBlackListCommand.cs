@@ -13,6 +13,11 @@ public class CreateBlackListCommand:IRequest<Entity.BlackList>
 public class CreateBlackListCommandHandler : IRequestHandler<CreateBlackListCommand, Entity.BlackList>
 {
     private readonly IBlacklistRepository _blacklistRepository;
+
+    public CreateBlackListCommandHandler(IBlacklistRepository blacklistRepository)
+    {
+        _blacklistRepository = blacklistRepository;
+    }
     
     public async Task<Entity.BlackList> Handle(CreateBlackListCommand request, CancellationToken cancellationToken)
     {

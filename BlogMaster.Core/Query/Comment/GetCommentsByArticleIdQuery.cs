@@ -12,10 +12,10 @@ public class GetCommentsByArticleIdQuery:IRequest<List<Entity.Comment>>
 public class GetCommentsByArticleIdQueryHandler : IRequestHandler<GetCommentsByArticleIdQuery,List< Entity.Comment>>
 {
     private readonly ICommentRepository _commentRepository;
-    private readonly Logger<GetCommentsByArticleIdQueryHandler> _logger;
+    private readonly ILogger<GetCommentsByArticleIdQueryHandler> _logger;
 
     public GetCommentsByArticleIdQueryHandler(ICommentRepository commentRepository,
-        Logger<GetCommentsByArticleIdQueryHandler> logger)
+        ILogger<GetCommentsByArticleIdQueryHandler> logger)
     {
         _commentRepository = commentRepository;
         _logger = logger;
@@ -26,12 +26,19 @@ public class GetCommentsByArticleIdQueryHandler : IRequestHandler<GetCommentsByA
         
         _logger.LogInformation(message: $"{request.ArticleId} article came");
        var result = await _commentRepository.GetCommentsByArticleId(request.ArticleId);
-        if (result == null || result.Any() )
-        {
+       if (result == null)
+       {
+           throw new Exception("Error: comment result is null.");
+       }
 
-            //  throw new commandNotFoundException($"user not found articleId: {request.articleId}");
-            return null;
-        }
+       if (!result.Any())
+       {
+           return null;
+       }
+      
+
+
+
 
         return result;
     }

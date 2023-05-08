@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.dockerignore = .dockerignore
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogMaster.Test", "BlogMaster.Test\BlogMaster.Test.csproj", "{9D60638F-793D-4882-B45B-21C81EB5D8D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,5 +33,9 @@ Global
 		{81E07D76-397C-4416-BD40-78A4AEF318ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81E07D76-397C-4416-BD40-78A4AEF318ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81E07D76-397C-4416-BD40-78A4AEF318ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D60638F-793D-4882-B45B-21C81EB5D8D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D60638F-793D-4882-B45B-21C81EB5D8D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D60638F-793D-4882-B45B-21C81EB5D8D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D60638F-793D-4882-B45B-21C81EB5D8D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

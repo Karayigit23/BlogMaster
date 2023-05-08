@@ -41,13 +41,13 @@ namespace BlogMaster.Api.Controllers
         }
 
         [HttpPost]
-        public async Task AddUser([FromBody] User user)
+        public async Task AddUser([FromBody] CreateUserCommand user)
         {
             await _mediator.Send(user);
         }
 
         [HttpPut("{userId}")]
-        public async Task UpdateUser(int userId, [FromBody] User user)
+        public async Task UpdateUser(int userId, [FromBody] UpdateUserCommand user)
         {
             user.Id = userId;
             await _mediator.Send(user);

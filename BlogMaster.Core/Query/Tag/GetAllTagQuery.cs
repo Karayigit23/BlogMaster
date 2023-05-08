@@ -10,6 +10,12 @@ public class GetAllTagQuery:IRequest<List<Entity.Tag>>
     {
         private readonly ITagRepository _TagRepository;
         private readonly ILogger<GetAllTagQueryHandler> _logger;
+
+        public GetAllTagQueryHandler(ITagRepository tagRepositoryi, ILogger<GetAllTagQueryHandler> logger)
+        {
+            _TagRepository = tagRepositoryi;
+            _logger = logger;
+        }
         
         public async Task<List<Entity.Tag>> Handle(GetAllTagQuery request, CancellationToken cancellationToken)
         {

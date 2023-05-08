@@ -13,9 +13,9 @@ public class GetTagsByArticleIdQuery:IRequest<List<Entity.Tag>>
 public class GetTagsByArticleIdQueryHandler : IRequestHandler<GetTagsByArticleIdQuery, List<Entity.Tag>>
 {
     private readonly ITagRepository _tagRepository;
-    private readonly Logger<GetTagsByArticleIdQueryHandler> _logger;
+    private readonly ILogger<GetTagsByArticleIdQueryHandler> _logger;
 
-    public GetTagsByArticleIdQueryHandler(ITagRepository tagRepository, Logger<GetTagsByArticleIdQueryHandler> logger)
+    public GetTagsByArticleIdQueryHandler(ITagRepository tagRepository, ILogger<GetTagsByArticleIdQueryHandler> logger)
     {
         _tagRepository = tagRepository;
         _logger = logger;

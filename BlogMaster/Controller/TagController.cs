@@ -42,13 +42,13 @@ namespace BlogMaster.Api.Controllers
         }
 
         [HttpPost]
-        public async Task AddTag([FromBody] Tag tag)
+        public async Task AddTag([FromBody] CreateTagCommand tag)
         {
             await _mediator.Send(tag);
         }
 
         [HttpPut("{id}")]
-        public async Task UpdateTag(int id, [FromBody] Tag tag)
+        public async Task UpdateTag(int id, [FromBody] UpdateTagCommand tag)
         {
 
             tag.Id = id;

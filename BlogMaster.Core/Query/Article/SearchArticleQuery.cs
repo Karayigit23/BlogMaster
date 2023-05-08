@@ -11,6 +11,10 @@ namespace BlogMaster.Core.Query.Article
         public string? Keyword { get; set; }
         public int? CategoryId { get; set; }
         public int? TagId { get; set; }
+        
+        public int Page { get; set; }
+        
+        public int Size { get; set; }
 
         public class SearchArticleQueryHandler : IRequestHandler<SearchArticleQuery, List<Entity.Article>>
         {
@@ -27,7 +31,7 @@ namespace BlogMaster.Core.Query.Article
             {
                 _logger.LogInformation("Searching for articles");
                 var result =
-                    await _articleRepository.Search(request.Id, request.Keyword, request.CategoryId, request.TagId);
+                    await _articleRepository.Search(request.Id, request.Keyword, request.CategoryId, request.TagId,request.Page,request.Size);
                 if (result == null)
                 {
                     //  throw new ArticleNotFoundException($"article not found articleId: {request.Id}");

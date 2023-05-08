@@ -13,10 +13,10 @@ public class GetBlackListByUserIdQuery:IRequest<List<Entity.BlackList>>
 public class GetBlackListByUserIdQueryHandler : IRequestHandler<GetBlackListByUserIdQuery, List<Entity.BlackList>>
 {
     private readonly IBlacklistRepository _blacklistRepository;
-    private readonly Logger<GetBlackListByUserIdQueryHandler> _logger;
+    private readonly ILogger<GetBlackListByUserIdQueryHandler> _logger;
 
     public GetBlackListByUserIdQueryHandler(IBlacklistRepository blacklistRepository,
-        Logger<GetBlackListByUserIdQueryHandler> logger)
+        ILogger<GetBlackListByUserIdQueryHandler> logger)
     {
         _blacklistRepository = blacklistRepository;
         _logger = logger;

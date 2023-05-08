@@ -11,8 +11,8 @@ public class GetTagByIdQuery:IRequest<Entity.Tag>
     public class GetTagByIdQueryHandler : IRequestHandler<GetTagByIdQuery, Entity.Tag>
     {
         private readonly ITagRepository _tagRepository;
-        private readonly Logger<GetTagByIdQueryHandler> _logger;
-        public GetTagByIdQueryHandler(ITagRepository tagRepository, Logger<GetTagByIdQueryHandler>
+        private readonly ILogger<GetTagByIdQueryHandler> _logger;
+        public GetTagByIdQueryHandler(ITagRepository tagRepository, ILogger<GetTagByIdQueryHandler>
             logger)
         {
             _tagRepository = tagRepository;
@@ -21,7 +21,7 @@ public class GetTagByIdQuery:IRequest<Entity.Tag>
         public async Task<Entity.Tag> Handle(GetTagByIdQuery request, CancellationToken cancellationToken)
         {
   
-            _logger.LogInformation(message:$"{request.Id} User came");
+            _logger.LogInformation(message:$"{request.Id} Tag came");
             var result = await _tagRepository.GetTagById(request.Id);
             if (result==null)
             {

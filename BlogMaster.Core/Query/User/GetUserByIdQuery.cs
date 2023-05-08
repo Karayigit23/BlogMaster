@@ -13,8 +13,8 @@ public class GetUserByIdQuery:IRequest<Entity.User>
 public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, Entity.User>
 {
  private readonly IUserRepository _userRepository;
- private readonly Logger<GetUserByIdQueryHandler> _logger;
- public GetUserByIdQueryHandler(IUserRepository userRepository, Logger<GetUserByIdQueryHandler>
+ private readonly ILogger<GetUserByIdQueryHandler> _logger;
+ public GetUserByIdQueryHandler(IUserRepository userRepository,ILogger<GetUserByIdQueryHandler>
   logger)
  {
   _userRepository = userRepository;

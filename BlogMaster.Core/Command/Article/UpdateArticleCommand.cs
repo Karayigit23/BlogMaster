@@ -27,7 +27,7 @@ public class UpdateArticleCommandHandler : IRequestHandler<UpdateArticleCommand,
         var article = await _articleRepository.GetArticleById(request.Id);
 
         article.Title = request.Title;
-        article.Content = request.Title;
+        article.Content = request.Content;
         article.PublishDate = request.PublishDate;
 
         await _articleRepository.UpdateArticle(article);

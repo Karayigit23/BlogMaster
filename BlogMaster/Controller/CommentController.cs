@@ -41,14 +41,14 @@ namespace BlogMaster.Controllers
         }
 
         [HttpPost]
-        public async Task AddComment([FromBody] Comment comment)
+        public async Task AddComment([FromBody] CreateCommentCommand comment)
         {
             await _mediator.Send(comment);
            
         }
 
         [HttpPut("{id}")]
-        public async Task UpdateComment(int id, [FromBody] Comment comment)
+        public async Task UpdateComment(int id, [FromBody] UpdateCommentCommand comment)
         {
           
 

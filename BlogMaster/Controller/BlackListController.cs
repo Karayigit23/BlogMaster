@@ -46,7 +46,7 @@ public class BlackListController : ControllerBase
     }
 
     [HttpPost]
-    public async Task AddBlackList([FromBody] BlackList blackList)
+    public async Task AddBlackList([FromBody] CreateBlackListCommand blackList)
     {
         await _mediator.Send(blackList);
     }
