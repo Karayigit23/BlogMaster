@@ -39,12 +39,3 @@ public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, Entity.
 
 
 
-
-//Buradakiler silinecek
-public class UserNotFoundException : Exception
-{
- public UserNotFoundException(string s)
- {
-  throw new NotImplementedException();
- }
-}
