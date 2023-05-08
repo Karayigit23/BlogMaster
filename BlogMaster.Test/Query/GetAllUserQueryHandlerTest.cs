@@ -27,7 +27,7 @@ public class GetAllUserQueryHandlerTest
         }
 
         [Test]
-        public async Task Handle_WhenCalled_ReturnsAllUsers()
+        public async Task handle_when_called_When_returns_AllUsers()
         {
 
             var users = new List<Core.Entity.User>()

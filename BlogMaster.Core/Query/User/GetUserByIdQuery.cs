@@ -27,10 +27,24 @@ public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, Entity.
   var result = await _userRepository.GetUserById(request.Id);
   if (result==null)
   {
-                
-   //  throw new UserNotFoundException($"user not found userId: {request.Id}");
+   
+    throw new Exception($"user not found userId: {request.Id}");
   }
 
   return result;
+ }
+}
+
+
+
+
+
+
+//Buradakiler silinecek
+public class UserNotFoundException : Exception
+{
+ public UserNotFoundException(string s)
+ {
+  throw new NotImplementedException();
  }
 }

@@ -23,6 +23,10 @@ namespace BlogMaster.Core.Command.Tag;
           
 
             var result =await _tagRepository.GetTagById(request.Id);
+            if (result == null)
+            {
+                throw new Exception($"Tag not found{request.Id}");
+            }
             await _tagRepository.DeleteTag(result);
             return Unit.Value;
 

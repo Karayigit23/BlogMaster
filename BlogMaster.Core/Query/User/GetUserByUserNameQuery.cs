@@ -12,10 +12,9 @@ public class GetUserByUserNameQuery:IRequest<Entity.User>
 public class GetUserByUserNameQueryHandler : IRequestHandler<GetUserByUserNameQuery, Entity.User>
 {
     private readonly IUserRepository _userRepository;
-    private readonly ILogger<GetUserByIdQueryHandler> _logger;
+    private readonly ILogger<GetUserByUserNameQueryHandler> _logger;
 
-    public GetUserByUserNameQueryHandler(IUserRepository userRepository, ILogger<GetUserByIdQueryHandler>
-        logger)
+    public GetUserByUserNameQueryHandler(IUserRepository userRepository,ILogger<GetUserByUserNameQueryHandler>logger)
     {
         _userRepository = userRepository;
         _logger = logger;
@@ -29,7 +28,8 @@ public class GetUserByUserNameQueryHandler : IRequestHandler<GetUserByUserNameQu
         if (result == null)
         {
 
-            //  throw new UserNotFoundException($"user not found userId: {request.Id}");
+             //throw new UserNotFoundException($"user not found userId: {request.Id}");
+             throw new Exception($"user not found userName: {request.UserName}");
         }
 
         return result;
