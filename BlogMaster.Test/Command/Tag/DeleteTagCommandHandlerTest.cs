@@ -39,11 +39,11 @@ public class DeleteTagCommandHandlerTest
         [Test]
         public void Handle_WhenTagDoesNotExist_ThrowsTagNotFoundException()
         {
-            // Arrange
+          
             var tagId = 1;
             _tagRepository.Setup(r => r.GetTagById(tagId)).ReturnsAsync(null as Core.Entity.Tag);
 
-            // Act & Assert
+            
             Assert.ThrowsAsync<Exception>(() => _handler.Handle(new DeleteTagCommand { Id = tagId }, CancellationToken.None));
         }
     }

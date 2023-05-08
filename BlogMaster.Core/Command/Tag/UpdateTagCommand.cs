@@ -24,7 +24,7 @@ namespace BlogMaster.Core.Command.Tag;
 
             if (tag == null)
             {
-                //throw new Exception("The tag to be updated was not found.");
+                throw new Exception("The tag to be updated was not found.");
             }
             tag.Name = request.Name;
 
