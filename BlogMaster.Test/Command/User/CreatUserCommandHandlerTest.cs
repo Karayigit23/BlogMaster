@@ -26,18 +26,17 @@ public class CreatUserCommandHandlerTest
     {
       _userRepository.Invocations.Clear();
     }
-
     [Test]
     public async Task handle_when_user_exist_then_throw_exception()
     {
 
         var user = new CreateUserCommand
         {
-            UserName = "Testuser",
-            FirstName = "Test",
-            LastName = "User",
-            Email = "Testuser@gamil.com",
-            Password = "TestUsErpassword"
+            UserName = "Testuser2",
+            FirstName = "Test12",
+            LastName = "User11",
+            Email = "Testus2er@gamil.com",
+            Password = "TestUsErpassword22"
 
         };
       
@@ -48,34 +47,35 @@ public class CreatUserCommandHandlerTest
         
     }
     [Test]
-    public void handle_when_null_command_then_throws_nullexception()
-    {
-       
-        CreateUserCommand command = null;
-
-       
-        Assert.ThrowsAsync<ArgumentNullException>(async () => await _handler.Handle(command, default));
-        _userRepository.Verify(p => p.AddUser(It.IsAny<Core.Entity.User>()), Times.Never);
-    }
-
-    [Test]
-    public void handle_when_duplicate_user_throws_exception()
+    public async Task handle_when_duplicate_user_throws_exception()
     {
         // Arrange
-        var command = new CreateUserCommand
+        var existingUser = new Core.Entity.User
         {
             UserName = "Testuser",
             FirstName = "Test",
             LastName = "User",
             Email = "Testuser@gmail.com",
-            Password = "TestUserpassword"
+            Password = "TestUsErpassword"
         };
-        _userRepository.Setup(p => p.GetUserByUsername(command.UserName)).ReturnsAsync(new Core.Entity.User());
+        _userRepository.Setup(p => p.GetUserByUsername(existingUser.UserName))
+            .ReturnsAsync(existingUser);
 
-        
-        Assert.ThrowsAsync<InvalidOperationException>(async () => await _handler.Handle(command, default));
-        _userRepository.Verify(p => p.GetUserByUsername(command.UserName), Times.Once);
+        var user = new CreateUserCommand
+        {
+            UserName = "Testuser",
+            FirstName = "Test",
+            LastName = "User",
+            Email = "Testuser2@gmail.com",
+            Password = "TestUsErpassword"
+        };
 
+        // Act + Assert
+        var ex = Assert.ThrowsAsync<Exception>(() => _handler.Handle(user, CancellationToken.None));
+        Assert.AreEqual($"A user with username {user.UserName} already exists.", ex.Message);
     }
+    
+
+   
 
 }

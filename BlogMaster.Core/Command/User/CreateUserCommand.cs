@@ -24,6 +24,10 @@ public class CreateUserHandler : IRequestHandler<CreateUserCommand, Entity.User>
 
     public async Task<Entity.User> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
+        if (await _userRepository.GetUserByUsername(request.UserName) != null)
+        {
+            throw new Exception($"A user with username {request.UserName} already exists.");
+        }
         var user = new Entity.User
         {
             UserName = request.UserName,
