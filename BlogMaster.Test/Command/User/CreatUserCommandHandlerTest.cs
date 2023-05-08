@@ -70,7 +70,7 @@ public class CreatUserCommandHandlerTest
             Password = "TestUsErpassword"
         };
 
-        // Act + Assert
+       
         var ex = Assert.ThrowsAsync<Exception>(() => _handler.Handle(user, CancellationToken.None));
         Assert.AreEqual($"A user with username {user.UserName} already exists.", ex.Message);
     }

@@ -28,7 +28,7 @@ public class DeleteUserCommandHandlerTest
     [Test]
     public async Task Handle_WhenUserExists_DeletesUser()
     {
-        // Arrange
+        
         var user = new Core.Entity.User
         {
             Id = 1,
@@ -41,10 +41,9 @@ public class DeleteUserCommandHandlerTest
 
         _userRepository.Setup(x => x.GetUserById(user.Id)).ReturnsAsync(user);
 
-        // Act
         await _handler.Handle(new DeleteUserCommand { Id = user.Id }, CancellationToken.None);
 
-        // Assert
+        
         _userRepository.Verify(x => x.DeleteUser(user), Times.Once);
     }
     [SetUp]
@@ -56,12 +55,11 @@ public class DeleteUserCommandHandlerTest
     [Test]
     public void Handle_WhenUserDoesNotExist_ThrowsException()
     {
-        // Arrange
         var userId = 1;
 
         _userRepository.Setup(x => x.GetUserById(userId)).ReturnsAsync(null as Core.Entity.User);
 
-        // Act + Assert
+        
         var ex = Assert.ThrowsAsync<Exception>(() => _handler.Handle(new DeleteUserCommand { Id = userId }, CancellationToken.None));
         Assert.AreEqual($"User with ID {userId} not found.", ex.Message);
     }
