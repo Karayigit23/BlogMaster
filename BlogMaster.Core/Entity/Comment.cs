@@ -9,6 +9,6 @@ public class Comment:EntityBase
     
     public string Author { get; set; }
     public int UserId { get; set; }
-    public Article Article { get; set; }
+    public string Article { get; set; }
     public int ArticleId { get; set; }
 }

@@ -10,6 +10,12 @@ public class GetAllCategoryQuery:IRequest<List<Entity.Category>>
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly ILogger<GetAllCategoryQueryHandler> _logger;
+
+        public GetAllCategoryQueryHandler( ICategoryRepository categoryRepository,ILogger<GetAllCategoryQueryHandler> logger)
+        {
+            _categoryRepository = categoryRepository;
+            _logger = logger;
+        }
         
         public async Task<List<Entity.Category>> Handle(GetAllCategoryQuery request, CancellationToken cancellationToken)
         {

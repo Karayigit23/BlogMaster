@@ -13,4 +13,5 @@ public interface IBlacklistRepository
     Task<List<BlackList>> GetBlacklistedByArticleId(int articleId);
 
     Task DeleteBlaclist(BlackList Blacklist);
+    Task<bool> IsArticleBlacklistedForUser(int articleId, int userId);
 }

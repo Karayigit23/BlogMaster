@@ -1,3 +1,4 @@
+using System.Globalization;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 
@@ -9,6 +10,8 @@ public class UpdateCommentCommand :IRequest<Entity.Comment>
     public string Content { get; set; }
     
     public string Author { get; set; }
+    
+  
 }
 
 public class UpdateCommentCommandHandler : IRequestHandler<UpdateCommentCommand, Entity.Comment>
@@ -22,10 +25,15 @@ public class UpdateCommentCommandHandler : IRequestHandler<UpdateCommentCommand,
     public async Task<Entity.Comment> Handle(UpdateCommentCommand request, CancellationToken cancellationToken)
     {
         var comment =  await _commentRepository.GetCommentById(request.Id);
+        if (comment==null)
+        {
+            throw new Exception($"not found {request.Id}");
+        }
 
         comment.Content = request.Content;
         comment.PublishDate=DateTime.Now;
         comment.Author = request.Author;
+      
        
       
 

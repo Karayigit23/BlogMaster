@@ -33,7 +33,7 @@ public class GetCommentsByArticleIdQueryHandler : IRequestHandler<GetCommentsByA
 
        if (!result.Any())
        {
-           return null;
+           throw new Exception();
        }
       
 

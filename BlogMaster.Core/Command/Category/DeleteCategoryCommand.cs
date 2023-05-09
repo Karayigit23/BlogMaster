@@ -15,10 +15,14 @@ public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryComman
     {
         _categoryRepository = categoryRepository;
     }
-    //EĞER BULAMAZSA HATA FIRLAT
+   
     public async Task<Unit> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
     {
         var Category = await _categoryRepository.GetCategoryById(request.Id);
+        if (Category==null)
+        {
+            throw new Exception($"not found {request.Id}");
+        }
        
         await _categoryRepository.DeleteCategory(Category);
         return Unit.Value;

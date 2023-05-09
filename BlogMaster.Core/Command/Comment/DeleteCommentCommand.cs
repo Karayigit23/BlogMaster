@@ -20,6 +20,10 @@ public class DeleteCommentCommandHandler : IRequestHandler<DeleteCommentCommand>
     public async Task<Unit> Handle(DeleteCommentCommand request, CancellationToken cancellationToken)
     {
         var comment = await _commentRepository.GetCommentById(request.Id);
+        if (comment == null)
+        {
+            throw new Exception($"not found {request.Id}");
+        }
         await _commentRepository.DeleteComment(comment);
         return Unit.Value;
     }

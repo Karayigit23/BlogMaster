@@ -56,4 +56,12 @@ public class BlackListRepository:IBlacklistRepository
         _dbContext.BlackList.Remove(Blacklist); 
         await _dbContext.SaveChangesAsync();
     }
+
+    public async Task<bool> IsArticleBlacklistedForUser(int articleId, int userId)
+    {
+        var result = await _dbContext.BlackList
+            .FirstOrDefaultAsync(x => x.ArticleId == articleId && x.UserId == userId);
+
+        return result != null;
+    }
 }

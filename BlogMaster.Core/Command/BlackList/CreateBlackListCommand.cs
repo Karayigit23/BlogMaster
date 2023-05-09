@@ -21,6 +21,12 @@ public class CreateBlackListCommandHandler : IRequestHandler<CreateBlackListComm
     
     public async Task<Entity.BlackList> Handle(CreateBlackListCommand request, CancellationToken cancellationToken)
     {
+        var isBlacklisted = await _blacklistRepository.IsArticleBlacklistedForUser(request.ArticleId, request.UserId);
+        if (isBlacklisted)
+        {
+            throw new Exception("This user has already been added to this article.");
+        }
+
         var Blacklist = new Entity.BlackList
         {
             ArticleId = request.ArticleId,

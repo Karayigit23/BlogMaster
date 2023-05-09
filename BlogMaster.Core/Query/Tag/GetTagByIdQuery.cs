@@ -26,7 +26,7 @@ public class GetTagByIdQuery:IRequest<Entity.Tag>
             if (result==null)
             {
                 
-                //  throw new TagNotFoundException($"tag not found tagId: {request.Id}");
+                  throw new Exception($"tag not found tagId: {request.Id}");
             }
 
             return result;

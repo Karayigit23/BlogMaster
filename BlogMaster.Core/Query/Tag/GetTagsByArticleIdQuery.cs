@@ -1,5 +1,5 @@
 using BlogMaster.Core.InterFaces;
-using BlogMaster.Core.Query.Comment;
+
 using MediatR;
 using Microsoft.Extensions.Logging;
 
@@ -25,12 +25,14 @@ public class GetTagsByArticleIdQueryHandler : IRequestHandler<GetTagsByArticleId
     {
         _logger.LogInformation(message: $"{request.ArticleId} article came");
         var result = await _tagRepository.GetTagsByArticleId(request.ArticleId);
-        if (result == null || result.Any() )
-        {
+        if (result== null || result.Count==0)
+            {
 
-            //  throw new commandNotFoundException($"user not found articleId: {request.articleId}");
+                throw new Exception($"user not found articleId: {request.ArticleId}");
           
-        }
+            }
+        
+       
 
         return result;
     }

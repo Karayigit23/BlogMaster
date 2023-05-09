@@ -27,7 +27,8 @@ public class GetCommentByIdQueryHandler : IRequestHandler<GetCommentByIdQuery, E
         if (result==null)
         {
                 
-            //  throw new ArticleNotFoundException($"car not found carId: {request.Id}");
+            //  throw new CommentNotFoundException($"car not found carId: {request.Id}");
+            throw new Exception($"Not found {request.Id}");
         }
 
         return result;

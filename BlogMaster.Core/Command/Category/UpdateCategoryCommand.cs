@@ -20,6 +20,10 @@ public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryComman
     public async Task<Entity.Category> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
     {
         var category = await _categoryRepository.GetCategoryById(request.Id);
+        if (category==null)
+        {
+            throw new Exception($"not found {request.Id}");
+        }
 
         category.Name = request.Name;
         category.Description = request.Description;
