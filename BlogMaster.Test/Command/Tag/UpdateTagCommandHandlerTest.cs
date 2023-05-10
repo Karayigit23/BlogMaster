@@ -1,4 +1,5 @@
 using BlogMaster.Core.Command.Tag;
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using BlogMaster.Test.Command.User;
 using Microsoft.Extensions.Logging;
@@ -64,7 +65,7 @@ public class UpdateTagCommandHandlerTest
             _tagRepository.Setup(x => x.GetTagById(command.Id)).ReturnsAsync((Core.Entity.Tag)null);
 
             // Assert
-            Assert.ThrowsAsync<Exception>(() => _handler.Handle(command, CancellationToken.None));
+            Assert.ThrowsAsync<NotFoundException>(() => _handler.Handle(command, CancellationToken.None));
         }
     }
 

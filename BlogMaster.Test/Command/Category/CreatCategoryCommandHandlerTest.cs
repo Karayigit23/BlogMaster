@@ -25,7 +25,7 @@ public class CreatCategoryCommandHandlerTest
         public async Task Handle_ValidCategory_ReturnsCreatedCategory()
         {
             // Arrange
-            var category = new Core.Entity.Category { Name = "Test Category", Description = "This is a test category", Articles = new List<Article>() };
+            var category = new Core.Entity.Category { Name = "Test Category", Description = "This is a test category", Articles = new List<Core.Entity.Article>() };
             _categoryRepositoryMock.Setup(m => m.AddCategory(It.IsAny<Core.Entity.Category>())).ReturnsAsync(category);
 
             var command = new CreateCategoryCommand { Name = "Test Category", Description = "This is a test category" };

@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 
@@ -26,7 +27,7 @@ public class CreateUserHandler : IRequestHandler<CreateUserCommand, Entity.User>
     {
         if (await _userRepository.GetUserByUsername(request.UserName) != null)
         {
-            throw new Exception($"A user with username {request.UserName} already exists.");
+            throw new ControlException($"A user with username {request.UserName} already exists.");
         }
         var user = new Entity.User
         {

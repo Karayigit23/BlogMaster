@@ -1,4 +1,6 @@
+using System.ComponentModel.Design;
 using BlogMaster.Core.Entity;
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 
@@ -25,6 +27,10 @@ public class UpdateArticleCommandHandler : IRequestHandler<UpdateArticleCommand,
     public async Task<Article> Handle(UpdateArticleCommand request, CancellationToken cancellationToken)
     {
         var article = await _articleRepository.GetArticleById(request.Id);
+        if (article==null)
+        {
+            throw new NotFoundException($"Article not found for id: {request.Id}");
+        }
 
         article.Title = request.Title;
         article.Content = request.Content;

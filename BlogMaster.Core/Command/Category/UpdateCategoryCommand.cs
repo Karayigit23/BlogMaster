@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 
@@ -22,7 +23,7 @@ public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryComman
         var category = await _categoryRepository.GetCategoryById(request.Id);
         if (category==null)
         {
-            throw new Exception($"not found {request.Id}");
+            throw new NotFoundException($"not found {request.Id}");
         }
 
         category.Name = request.Name;

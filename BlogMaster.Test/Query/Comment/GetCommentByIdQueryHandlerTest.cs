@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using BlogMaster.Core.Query.Comment;
 using Microsoft.Extensions.Logging;
@@ -69,7 +70,7 @@ public class GetCommentByIdQueryHandlerTest
             var query = new GetCommentByIdQuery { Id = nonExistingCommentId };
             var handler = new GetCommentByIdQueryHandler(_commentRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<Exception>(() => handler.Handle(query, CancellationToken.None));
+            Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(query, CancellationToken.None));
 
             _commentRepository.Verify(x => x.GetCommentById(nonExistingCommentId), Times.Once);
         }

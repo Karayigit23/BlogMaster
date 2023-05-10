@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 
@@ -19,6 +20,10 @@ public class DeleteBlackListCommandHandler : IRequestHandler<DeleteBlackListComm
     public async Task<Unit> Handle(DeleteBlackListCommand request, CancellationToken cancellationToken)
     {
         var list = await _blacklistRepository.GetBlacklistById(request.Id);
+        if (list == null)
+        {
+            throw new NotFoundException($"not found {request.Id}");
+        }
         await _blacklistRepository.DeleteBlaclist(list);
         return Unit.Value;
     }

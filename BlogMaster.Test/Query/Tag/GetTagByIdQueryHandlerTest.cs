@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using BlogMaster.Core.Query.Tag;
 using Microsoft.Extensions.Logging;
@@ -48,7 +49,7 @@ public class GetTagByIdQueryHandlerTest
         _tagRepository.Setup(x => x.GetTagById(tagId)).ReturnsAsync((Core.Entity.Tag)null);
 
         // Assert
-        var exception = Assert.ThrowsAsync<Exception>(() => _handler.Handle(new GetTagByIdQuery { Id = tagId }, CancellationToken.None));
+        var exception = Assert.ThrowsAsync<NotFoundException>(() => _handler.Handle(new GetTagByIdQuery { Id = tagId }, CancellationToken.None));
         Assert.AreEqual($"tag not found tagId: {tagId}", exception.Message);
     }
 }

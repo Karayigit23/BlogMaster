@@ -1,4 +1,5 @@
 using BlogMaster.Core.Command.Tag;
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using Moq;
 
@@ -44,7 +45,7 @@ public class DeleteTagCommandHandlerTest
             _tagRepository.Setup(r => r.GetTagById(tagId)).ReturnsAsync(null as Core.Entity.Tag);
 
             
-            Assert.ThrowsAsync<Exception>(() => _handler.Handle(new DeleteTagCommand { Id = tagId }, CancellationToken.None));
+            Assert.ThrowsAsync<NotFoundException>(() => _handler.Handle(new DeleteTagCommand { Id = tagId }, CancellationToken.None));
         }
     }
 

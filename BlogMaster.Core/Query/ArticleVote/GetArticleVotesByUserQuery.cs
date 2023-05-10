@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -28,7 +29,7 @@ public class GetUserVotesQueryHandler : IRequestHandler<GetArticleVotesByUserQue
             if (result == null)
             {
 
-                //  throw new UserNotFoundException($"user not found userId: {request.Id}");
+                 throw new NotFoundException($"user not found userId: {request.UserId}");
             }
 
             return result;

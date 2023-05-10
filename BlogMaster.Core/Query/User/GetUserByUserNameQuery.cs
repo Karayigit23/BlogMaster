@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -29,7 +30,7 @@ public class GetUserByUserNameQueryHandler : IRequestHandler<GetUserByUserNameQu
         {
 
              //throw new UserNotFoundException($"user not found userId: {request.Id}");
-             throw new Exception($"user not found userName: {request.UserName}");
+             throw new ControlException($"user not found userName: {request.UserName}");
         }
 
         return result;

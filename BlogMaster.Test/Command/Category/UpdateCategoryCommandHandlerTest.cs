@@ -1,4 +1,5 @@
 using BlogMaster.Core.Command.Category;
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using Moq;
 
@@ -57,7 +58,7 @@ public class UpdateCategoryCommandHandlerTest
         var command = new UpdateCategoryCommand { Id = invalidCategoryId, Name = "Test Category", Description = "This is a test category" };
 
         // Act & Assert
-        Assert.ThrowsAsync<Exception>(() => _handler.Handle(command, CancellationToken.None), $"not found {invalidCategoryId}");
+        Assert.ThrowsAsync<NotFoundException>(() => _handler.Handle(command, CancellationToken.None), $"not found {invalidCategoryId}");
 
         // Verify
         _categoryRepositoryMock.Verify(m => m.GetCategoryById(invalidCategoryId), Times.Once);

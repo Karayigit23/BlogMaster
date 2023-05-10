@@ -1,4 +1,5 @@
 using BlogMaster.Core.Entity;
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using BlogMaster.Core.Query.User;
 using Microsoft.Extensions.Logging;
@@ -49,7 +50,7 @@ public class GetUserByIdQueryHandlerTest
                 _userRepository.Setup(x => x.GetUserById(userId)).ReturnsAsync((User)null);
 
                 // Act + Assert
-                var ex = Assert.ThrowsAsync<Exception>(() =>
+                var ex = Assert.ThrowsAsync<NotFoundException>(() =>
                     _handler.Handle(new GetUserByIdQuery { Id = userId }, CancellationToken.None));
                 Assert.AreEqual($"user not found userId: {userId}", ex.Message);
             

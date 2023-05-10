@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -26,7 +27,7 @@ public class GetTagByIdQuery:IRequest<Entity.Tag>
             if (result==null)
             {
                 
-                  throw new Exception($"tag not found tagId: {request.Id}");
+                  throw new NotFoundException($"tag not found tagId: {request.Id}");
             }
 
             return result;

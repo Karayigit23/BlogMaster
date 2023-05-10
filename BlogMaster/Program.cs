@@ -2,11 +2,12 @@
 using BlogMaster.Core.Command.ArticleCommand;
 using BlogMaster.Core.InterFaces;
 using BlogMaster.Infrastructure;
-using BlogMaster.Infrastructure.Repositories;
-using BlogMaster.MiddleWares;
+using BlogMaster.Infrastructure.Repositories; 
 using MediatR;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using ExceptionHandlerMiddleware = BlogMaster.MiddleWares.ExceptionHandlerMiddleware;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -45,6 +46,7 @@ using (var scope = app.Services.CreateScope())
 
 
 app.UseAuthorization();
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.MapControllers();
 app.UseOpenApi();
 app.UseSwaggerUi3();
@@ -52,3 +54,4 @@ app.UseSwaggerUi3();
 app.MapGet("/", () => "Hello World!");
 
 app.Run();
+

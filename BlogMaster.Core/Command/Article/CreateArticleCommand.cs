@@ -1,4 +1,5 @@
 using BlogMaster.Core.Entity;
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 
@@ -36,7 +37,7 @@ public class CreateArticleHandler : IRequestHandler<CreateArticleCommand, Articl
        
         if (todaysArticleCount >= 2)
         {
-            throw new Exception("You cannot publish more than 2 articles today.");
+            throw new CountException("You cannot publish more than 2 articles today.");
         }
 
       

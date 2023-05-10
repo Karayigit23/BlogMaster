@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 
 using MediatR;
@@ -28,7 +29,7 @@ public class GetTagsByArticleIdQueryHandler : IRequestHandler<GetTagsByArticleId
         if (result== null || result.Count==0)
             {
 
-                throw new Exception($"user not found articleId: {request.ArticleId}");
+                throw new NotFoundException($"user not found articleId: {request.ArticleId}");
           
             }
         

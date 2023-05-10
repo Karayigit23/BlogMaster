@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -34,7 +35,7 @@ namespace BlogMaster.Core.Query.Article
                     await _articleRepository.Search(request.Id, request.Keyword, request.CategoryId, request.TagId,request.Page,request.Size);
                 if (result == null)
                 {
-                    //  throw new ArticleNotFoundException($"article not found articleId: {request.Id}");
+                     throw new NotFoundException($" not found articleId: {request.Id}");
                 }
 
                 return result;

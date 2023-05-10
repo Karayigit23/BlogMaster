@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 
@@ -24,7 +25,7 @@ namespace BlogMaster.Core.Command.Tag;
 
             if (tag == null)
             {
-                throw new Exception("The tag to be updated was not found.");
+                throw new NotFoundException("The tag to be updated was not found.");
             }
             tag.Name = request.Name;
 

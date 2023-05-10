@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -28,12 +29,12 @@ public class GetCommentsByArticleIdQueryHandler : IRequestHandler<GetCommentsByA
        var result = await _commentRepository.GetCommentsByArticleId(request.ArticleId);
        if (result == null)
        {
-           throw new Exception("Error: comment result is null.");
+           throw new ControlException("Error: comment result is null.");
        }
 
        if (!result.Any())
        {
-           throw new Exception();
+           throw new ControlException("Comment result is null");
        }
       
 

@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 
@@ -24,7 +25,7 @@ public class CreateBlackListCommandHandler : IRequestHandler<CreateBlackListComm
         var isBlacklisted = await _blacklistRepository.IsArticleBlacklistedForUser(request.ArticleId, request.UserId);
         if (isBlacklisted)
         {
-            throw new Exception("This user has already been added to this article.");
+            throw new ControlException("This user has already been added to this article.");
         }
 
         var Blacklist = new Entity.BlackList

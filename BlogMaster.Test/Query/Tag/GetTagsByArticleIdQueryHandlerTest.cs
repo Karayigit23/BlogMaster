@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using BlogMaster.Core.Query.Tag;
 
@@ -58,7 +59,7 @@ namespace BlogMaster.Test.Query.Tag
 
 
             var exception =
-                Assert.ThrowsAsync<Exception>(async () => await _handler.Handle(request, CancellationToken.None));
+                Assert.ThrowsAsync<NotFoundException>(async () => await _handler.Handle(request, CancellationToken.None));
         }
     }
 }

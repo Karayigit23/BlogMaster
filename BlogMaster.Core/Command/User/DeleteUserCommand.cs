@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 
@@ -22,7 +23,7 @@ public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand>
        
         if (User == null)
         {
-            throw new Exception($"User with ID {request.Id} not found.");
+            throw new NotFoundException($"User with ID {request.Id} not found.");
         }
        
         await _userRepository.DeleteUser(User);

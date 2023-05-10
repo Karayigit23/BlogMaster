@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 
@@ -16,10 +17,14 @@ public class DeleteArticleCommandHandler : IRequestHandler<DeleteArticleCommand>
     {
         _articleRepository = articleRepository;
     }
-    //EĞER BULAMAZSA HATA FIRLAT
+   
     public async Task<Unit> Handle(DeleteArticleCommand request, CancellationToken cancellationToken)
     {
         var Article = await _articleRepository.GetArticleById(request.Id);
+        if (Article==null)
+        {
+            throw new NotFoundException($"not found{request.Id}");
+        }
        
         await _articleRepository.DeleteArticle(Article);
         return Unit.Value;

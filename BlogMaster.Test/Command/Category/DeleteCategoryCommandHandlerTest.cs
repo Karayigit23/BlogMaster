@@ -1,4 +1,5 @@
 using BlogMaster.Core.Command.Category;
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using Moq;
 
@@ -49,7 +50,7 @@ public void Handle_InvalidCategoryId_ThrowsException()
     var command = new DeleteCategoryCommand { Id = categoryId };
 
     // Act + Assert
-    Assert.ThrowsAsync<Exception>(() => _handler.Handle(command, CancellationToken.None));
+    Assert.ThrowsAsync<NotFoundException>(() => _handler.Handle(command, CancellationToken.None));
 }
 }
 

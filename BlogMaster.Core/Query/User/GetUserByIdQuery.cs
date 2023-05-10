@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using BlogMaster.Core.Query.Article;
 using MediatR;
@@ -28,7 +29,7 @@ public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, Entity.
   if (result==null)
   {
    
-    throw new Exception($"user not found userId: {request.Id}");
+    throw new NotFoundException($"user not found userId: {request.Id}");
   }
 
   return result;

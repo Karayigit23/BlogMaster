@@ -1,4 +1,5 @@
 using BlogMaster.Core.Command.User;
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -60,7 +61,7 @@ public class DeleteUserCommandHandlerTest
         _userRepository.Setup(x => x.GetUserById(userId)).ReturnsAsync(null as Core.Entity.User);
 
         
-        var ex = Assert.ThrowsAsync<Exception>(() => _handler.Handle(new DeleteUserCommand { Id = userId }, CancellationToken.None));
+        var ex = Assert.ThrowsAsync<NotFoundException>(() => _handler.Handle(new DeleteUserCommand { Id = userId }, CancellationToken.None));
         Assert.AreEqual($"User with ID {userId} not found.", ex.Message);
     }
 }

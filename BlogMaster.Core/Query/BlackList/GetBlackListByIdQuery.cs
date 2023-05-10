@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -26,7 +27,7 @@ public class GetBlackListByIdQueryHandler : IRequestHandler<GetBlackListByIdQuer
         var result = await _blacklistRepository.GetBlacklistById(request.Id);
         if (result==null)
         {
-            //throw new BlacklistNotFoundException($"Blacklist item not found Id:{request.Id}");
+            throw new NotFoundException($"Blacklist item not found Id:{request.Id}");
         }
 
         return result;

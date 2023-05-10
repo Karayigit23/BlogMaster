@@ -1,4 +1,5 @@
 using BlogMaster.Core.Entity;
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -29,7 +30,7 @@ namespace BlogMaster.Core.Query.Article
             if (result==null)
             {
                 
-              //  throw new ArticleNotFoundException($"article not found articleId: {request.Id}");
+               throw new NotFoundException($"article not found articleId: {request.Id}");
             }
 
             return result;

@@ -1,4 +1,5 @@
 using BlogMaster.Core.Entity;
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using BlogMaster.Core.Query.User;
 using Microsoft.Extensions.Logging;
@@ -52,8 +53,8 @@ public class GetUserByUserNameQueryHandlerTest
             
             
             
-            //exceptionları buraya gir
-            var ex = Assert.ThrowsAsync<Exception>(() => _handler.Handle(new GetUserByUserNameQuery { UserName = nonExistingUserName }, CancellationToken.None));
+           
+            var ex = Assert.ThrowsAsync<ControlException>(() => _handler.Handle(new GetUserByUserNameQuery { UserName = nonExistingUserName }, CancellationToken.None));
             Assert.AreEqual($"user not found userName: {nonExistingUserName}", ex.Message);
             _userRepository.Verify(x => x.GetUserByUsername(nonExistingUserName), Times.Once);
         }

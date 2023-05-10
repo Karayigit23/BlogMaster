@@ -1,4 +1,5 @@
 using BlogMaster.Core.Entity;
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using BlogMaster.Core.Query.Comment;
 using Microsoft.Extensions.Logging;
@@ -61,7 +62,7 @@ public class GetCommentByArticleIdqQueryHandlerTest
         _commentRepositoryMock.Setup(m => m.GetCommentsByArticleId(articleId)).ReturnsAsync((List<Core.Entity.Comment>)null);
 
         // Act + Assert
-        Assert.ThrowsAsync<Exception>(async () => await _handler.Handle(new GetCommentsByArticleIdQuery { ArticleId = articleId }, CancellationToken.None));
+        Assert.ThrowsAsync<ControlException>(async () => await _handler.Handle(new GetCommentsByArticleIdQuery { ArticleId = articleId }, CancellationToken.None));
     }
 
     [Test]
@@ -73,7 +74,7 @@ public class GetCommentByArticleIdqQueryHandlerTest
         _commentRepositoryMock.Setup(m => m.GetCommentsByArticleId(articleId)).ReturnsAsync(comments);
 
         // Act + Assert
-        Assert.ThrowsAsync<Exception>(async () => await _handler.Handle(new GetCommentsByArticleIdQuery { ArticleId = articleId }, CancellationToken.None));
+        Assert.ThrowsAsync<ControlException>(async () => await _handler.Handle(new GetCommentsByArticleIdQuery { ArticleId = articleId }, CancellationToken.None));
     }
 }
 

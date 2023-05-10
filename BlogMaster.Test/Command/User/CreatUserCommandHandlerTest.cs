@@ -1,4 +1,5 @@
 using BlogMaster.Core.Command.User;
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -71,7 +72,7 @@ public class CreatUserCommandHandlerTest
         };
 
        
-        var ex = Assert.ThrowsAsync<Exception>(() => _handler.Handle(user, CancellationToken.None));
+        var ex = Assert.ThrowsAsync<ControlException>(() => _handler.Handle(user, CancellationToken.None));
         Assert.AreEqual($"A user with username {user.UserName} already exists.", ex.Message);
     }
     

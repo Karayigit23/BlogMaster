@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -27,7 +28,7 @@ public class GetBlackListByUserIdQueryHandler : IRequestHandler<GetBlackListByUs
        var result = await _blacklistRepository.GetBlacklistByUserId(request.UserId);
        if (result==null || result.Any())
        {
-           //throw new BlacklistNotFoundException($"blacklist not found userId:{request.userId}");
+           throw new NotFoundException($"blacklist not found userId:{request.UserId}");
        }
 
        return result;

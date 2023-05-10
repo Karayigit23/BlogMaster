@@ -1,4 +1,5 @@
 using System.Globalization;
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 
@@ -27,7 +28,7 @@ public class UpdateCommentCommandHandler : IRequestHandler<UpdateCommentCommand,
         var comment =  await _commentRepository.GetCommentById(request.Id);
         if (comment==null)
         {
-            throw new Exception($"not found {request.Id}");
+            throw new NotFoundException($"not found {request.Id}");
         }
 
         comment.Content = request.Content;

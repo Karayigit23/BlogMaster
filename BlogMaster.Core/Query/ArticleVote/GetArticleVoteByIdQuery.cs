@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -25,8 +26,8 @@ public class GetArticleVoteByIdQueryHandler : IRequestHandler<GetArticleVoteById
         _logger.LogInformation(message:$"{request.Id} ArticleVote came");
         var result = await _articleVoteRepository.GetById(request.Id);
         if (result==null)
-        {
-            //  throw new ArticleNotFoundException($"article not found articleId: {request.Id}");
+        { 
+            throw new NotFoundException($"article not found articleId: {request.Id}");
         }
     
         return result;

@@ -1,4 +1,5 @@
 using BlogMaster.Core.Command.Comment;
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using Moq;
 
@@ -81,6 +82,6 @@ public class UpdateCommentCommandHandlerTest
             _commentRepository.Setup(x => x.GetCommentById(commentId)).ReturnsAsync((Core.Entity.Comment)null);
 
             // Act and assert
-            Assert.ThrowsAsync<Exception>(() => _Handler.Handle(updateCommentCommand, CancellationToken.None));
+            Assert.ThrowsAsync<NotFoundException>(() => _Handler.Handle(updateCommentCommand, CancellationToken.None));
         }
     }

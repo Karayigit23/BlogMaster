@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 
@@ -21,7 +22,7 @@ public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryComman
         var Category = await _categoryRepository.GetCategoryById(request.Id);
         if (Category==null)
         {
-            throw new Exception($"not found {request.Id}");
+            throw new NotFoundException($"not found {request.Id}");
         }
        
         await _categoryRepository.DeleteCategory(Category);

@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -28,7 +29,7 @@ public class GetCommentByIdQueryHandler : IRequestHandler<GetCommentByIdQuery, E
         {
                 
             //  throw new CommentNotFoundException($"car not found carId: {request.Id}");
-            throw new Exception($"Not found {request.Id}");
+            throw new NotFoundException($"Not found {request.Id}");
         }
 
         return result;

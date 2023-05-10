@@ -1,4 +1,5 @@
 using BlogMaster.Core.Command.User;
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 
@@ -26,7 +27,7 @@ public class UpdateArticleVoteCommandHandler : IRequestHandler<UpdateArticleVote
         var vote = await _articleVoteRepository.GetById(request.Id);
         if (vote==null)
         {
-            throw new Exception("ArticleVote not found."); 
+            throw new NotFoundException("ArticleVote not found."); 
         }
         else
         {
