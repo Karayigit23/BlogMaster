@@ -1148,7 +1148,8 @@
         "dependencies": {
           "BlogMaster.Core": "1.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.0-preview.3.23174.2",
-          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0-preview.3.23174.2"
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0-preview.3.23174.2",
+          "StackExchange.Redis": "2.6.111"
         },
         "runtime": {
           "BlogMaster.Infrastructure.dll": {}

@@ -13,5 +13,3 @@
 /Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/obj/Debug/net7.0/refint/BlogMaster.Infrastructure.dll
 /Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/obj/Debug/net7.0/BlogMaster.Infrastructure.pdb
 /Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/obj/Debug/net7.0/ref/BlogMaster.Infrastructure.dll
-/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/bin/Debug/net7.0/StackExchange.Redis.dll
-/Users/yigit/RiderProjects/BlogMaster/BlogMaster.Infrastructure/bin/Debug/net7.0/StackExchange.Redis.xml
