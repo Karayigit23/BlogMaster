@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
-        <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
@@ -11,6 +10,7 @@
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0-preview.3.23174.8" />
       <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0-preview.3.23174.8" />
       <PackageReference Include="NSwag.AspNetCore" Version="13.18.2" />
+      <PackageReference Include="StackExchange.Redis" Version="2.6.111" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,0 +1,8 @@
+/Users/yigit/RiderProjects/BlogMaster/out/BlogMaster.Core.dll
+/Users/yigit/RiderProjects/BlogMaster/out/BlogMaster.Core.deps.json
+/Users/yigit/RiderProjects/BlogMaster/out/BlogMaster.Core.pdb
+/Users/yigit/RiderProjects/BlogMaster/out/MediatR.dll
+/Users/yigit/RiderProjects/BlogMaster/out/MediatR.Contracts.dll
+/Users/yigit/RiderProjects/BlogMaster/out/MediatR.Extensions.Microsoft.DependencyInjection.dll
+/Users/yigit/RiderProjects/BlogMaster/out/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/yigit/RiderProjects/BlogMaster/out/Microsoft.Extensions.Logging.Abstractions.dll

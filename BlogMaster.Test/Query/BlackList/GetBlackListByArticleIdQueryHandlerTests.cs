@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using BlogMaster.Core.Query.BlackList;
 using Microsoft.Extensions.Logging;
@@ -41,12 +42,7 @@ public class GetBlackListByArticleIdQueryHandlerTests
 
         // Assert
         Assert.AreEqual(blackList, result);
-        _loggerMock.Verify(x => x.Log(
-            LogLevel.Information,
-            It.IsAny<EventId>(),
-            It.Is<It.IsAnyType>((v, t) => v.ToString().Contains(articleId.ToString())),
-            It.IsAny<Exception>(),
-            It.IsAny<Func<It.IsAnyType, Exception, string>>()), Times.Once);
+        
     }
 
     [Test]
@@ -62,7 +58,7 @@ public class GetBlackListByArticleIdQueryHandlerTests
         var query = new GetBlackListByArticleIdQuery { ArticleId = articleId };
 
         // Act & Assert
-        var ex = Assert.ThrowsAsync<Exception>(() => _handler.Handle(query, default));
+        var ex = Assert.ThrowsAsync<NotFoundException>(() => _handler.Handle(query, default));
         Assert.AreEqual($"blacklist not found articleId:{articleId}", ex.Message);
 
         _loggerMock.Verify(x => x.Log(

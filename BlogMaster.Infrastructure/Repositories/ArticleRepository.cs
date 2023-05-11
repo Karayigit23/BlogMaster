@@ -1,26 +1,42 @@
 using BlogMaster.Core.Entity;
 using BlogMaster.Core.InterFaces;
+using BlogMaster.Infrastructure.Cache;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlogMaster.Infrastructure.Repositories;
 
 public class ArticleRepository:IArticleRepository
 {
-  
-    
 
+
+    private const string prefix = "article:";
     private readonly AppDbContext _dbContext;
+    private readonly ICacheService _cacheService;
     
-    public ArticleRepository(AppDbContext dbContext)
+    public ArticleRepository(AppDbContext dbContext,ICacheService cacheService)
     {
         _dbContext = dbContext;
+        _cacheService = cacheService;
     }
 
     
-    //bu arama ile ilgili tüm kısımları search kısmına at articldan ayır  
-    public  Task<Article> GetArticleById(int id)
+     
+    public async  Task<Article> GetArticleById(int id)
     {
-        return  _dbContext.Article.Where(a => a.Id == id).FirstOrDefaultAsync();
+        var article = await _cacheService.GetValueAsync<Article>($"{prefix}{id}");
+        if (article!=null)
+        {
+            return article;
+        }
+        
+        article = await _dbContext.Article.Where(a => a.Id == id).FirstOrDefaultAsync();
+
+        if (article != null)
+        {
+           await _cacheService.AddAsync($"{prefix}{id}", article);
+        }
+
+        return article;
     }
 
     public  Task<List<Article>> GetArticlesByCategory(int categoryId)
@@ -86,7 +102,7 @@ public class ArticleRepository:IArticleRepository
     public async Task DeleteArticle(Article article)
     {
 
-
+        await  _cacheService.Clear($"{prefix}{article.Id}");
         _dbContext.Article.Remove(article); 
         await _dbContext.SaveChangesAsync();
         

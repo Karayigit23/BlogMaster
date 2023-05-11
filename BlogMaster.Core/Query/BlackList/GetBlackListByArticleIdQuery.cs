@@ -1,3 +1,4 @@
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -24,9 +25,9 @@ public class GetBlackListByArticleIdQueryHandler : IRequestHandler<GetBlackListB
     {
       _logger.LogInformation(message:$"{request.ArticleId}All users belonging to this article id came");
       var result = await _blacklistRepository.GetBlacklistedByArticleId(request.ArticleId);
-      if (result==null|| result.Any())
+      if (result==null|| result.Count==0)
       {
-          //throw new BlackListNotFoundException($"blacklist not found articleId:{request.articleId}");
+          throw new NotFoundException($"blacklist not found articleId:{request.ArticleId}");
       }
 
       return result;

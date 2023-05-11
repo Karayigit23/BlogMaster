@@ -2,11 +2,13 @@
 using BlogMaster.Core.Command.ArticleCommand;
 using BlogMaster.Core.InterFaces;
 using BlogMaster.Infrastructure;
+using BlogMaster.Infrastructure.Cache;
 using BlogMaster.Infrastructure.Repositories; 
 using MediatR;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using StackExchange.Redis;
 using ExceptionHandlerMiddleware = BlogMaster.MiddleWares.ExceptionHandlerMiddleware;
 
 
@@ -28,6 +30,10 @@ builder.Services.AddSwaggerDocument(p=>p.PostProcess=(o => { o.Info.Title = "Blo
 
 
 builder.Services.AddDbContext<AppDbContext>(p => p.UseSqlServer(builder.Configuration.GetValue<string>("sqlConnection")));
+
+var multiplexer = ConnectionMultiplexer.Connect(builder.Configuration.GetValue<string>("Redis"));
+builder.Services.AddSingleton<IConnectionMultiplexer>(multiplexer);
+builder.Services.AddScoped<ICacheService, RedisCacheService>();
 
 
 

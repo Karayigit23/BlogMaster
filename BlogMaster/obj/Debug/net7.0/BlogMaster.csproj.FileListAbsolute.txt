@@ -90,3 +90,6 @@
 /Users/yigit/RiderProjects/BlogMaster/BlogMaster/obj/Debug/net7.0/BlogMaster.pdb
 /Users/yigit/RiderProjects/BlogMaster/BlogMaster/obj/Debug/net7.0/BlogMaster.genruntimeconfig.cache
 /Users/yigit/RiderProjects/BlogMaster/BlogMaster/obj/Debug/net7.0/ref/BlogMaster.dll
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster/bin/Debug/net7.0/Pipelines.Sockets.Unofficial.dll
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster/bin/Debug/net7.0/StackExchange.Redis.dll
+/Users/yigit/RiderProjects/BlogMaster/BlogMaster/bin/Debug/net7.0/appsettings.Prod.json

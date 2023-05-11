@@ -1,4 +1,5 @@
 using BlogMaster.Core.Command.ArticleCommand;
+using BlogMaster.Core.Exception;
 using BlogMaster.Core.InterFaces;
 using Moq;
 
@@ -73,7 +74,7 @@ public class CreateArticleHandlerTests
             .ReturnsAsync(2); // set mock response
 
         // Act & Assert
-        var ex = Assert.ThrowsAsync<Exception>(() => _handler.Handle(command, CancellationToken.None));
+        var ex = Assert.ThrowsAsync<CountException>(() => _handler.Handle(command, CancellationToken.None));
         Assert.AreEqual("You cannot publish more than 2 articles today.", ex.Message);
     }
 }

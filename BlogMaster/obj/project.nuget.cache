@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "vLiwdOQ/8DN+pwgiSoL9UmKKI0ekjk50im2CbbSPnlZx67weYckRGwg2Ve3ekLiU8YhpWN4C8OvI1wjg7QUjLQ==",
+  "dgSpecHash": "eto/FFm2pwZbOjoloT4ySyRuQOkkQ0tAIN8BTjOzC9Jgym7Fl5qlmIH0kN1HHFMHx3HfLXiB6L1b0l397jyiPw==",
   "success": true,
   "projectFilePath": "/Users/yigit/RiderProjects/BlogMaster/BlogMaster/BlogMaster.csproj",
   "expectedPackageFiles": [
@@ -52,6 +52,8 @@
     "/Users/yigit/.nuget/packages/nswag.core.yaml/13.18.2/nswag.core.yaml.13.18.2.nupkg.sha512",
     "/Users/yigit/.nuget/packages/nswag.generation/13.18.2/nswag.generation.13.18.2.nupkg.sha512",
     "/Users/yigit/.nuget/packages/nswag.generation.aspnetcore/13.18.2/nswag.generation.aspnetcore.13.18.2.nupkg.sha512",
+    "/Users/yigit/.nuget/packages/pipelines.sockets.unofficial/2.2.2/pipelines.sockets.unofficial.2.2.2.nupkg.sha512",
+    "/Users/yigit/.nuget/packages/stackexchange.redis/2.6.111/stackexchange.redis.2.6.111.nupkg.sha512",
     "/Users/yigit/.nuget/packages/system.collections/4.3.0/system.collections.4.3.0.nupkg.sha512",
     "/Users/yigit/.nuget/packages/system.collections.nongeneric/4.3.0/system.collections.nongeneric.4.3.0.nupkg.sha512",
     "/Users/yigit/.nuget/packages/system.collections.specialized/4.3.0/system.collections.specialized.4.3.0.nupkg.sha512",
@@ -71,6 +73,7 @@
     "/Users/yigit/.nuget/packages/system.io/4.3.0/system.io.4.3.0.nupkg.sha512",
     "/Users/yigit/.nuget/packages/system.io.filesystem/4.3.0/system.io.filesystem.4.3.0.nupkg.sha512",
     "/Users/yigit/.nuget/packages/system.io.filesystem.primitives/4.3.0/system.io.filesystem.primitives.4.3.0.nupkg.sha512",
+    "/Users/yigit/.nuget/packages/system.io.pipelines/5.0.1/system.io.pipelines.5.0.1.nupkg.sha512",
     "/Users/yigit/.nuget/packages/system.linq/4.3.0/system.linq.4.3.0.nupkg.sha512",
     "/Users/yigit/.nuget/packages/system.linq.expressions/4.3.0/system.linq.expressions.4.3.0.nupkg.sha512",
     "/Users/yigit/.nuget/packages/system.memory/4.5.4/system.memory.4.5.4.nupkg.sha512",
